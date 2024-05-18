@@ -1,0 +1,64 @@
+﻿@model Software.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="title d-flex align-items-center mt-3" style="margin-left: 30px;">
+    <i class='bx bx-chevron-left' style="background-color: black; color: red; border-radius: 50%; font-size: 20px; padding: 3px;"></i>
+    <h4 style="margin: 0; margin-left: 10px;">ĐĂNG KÝ TÀI KHOẢN KHÁCH HÀNG</h4>
+</div>
+
+<form class="mt-3 pb-4" action="" style="margin-left: 30px; background-color: white; padding-left: 40px; padding-right: 40px; padding-top: 30px; border-radius: 10px;">
+    <div class="row">
+        <div class="col-8">
+            <div class="name">
+                <label style="font-weight: bold;" for="">Họ tên</label>
+                <br>
+                <input type="text" style="width: 100%; border-radius: 5px; padding: 6px;">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="money">
+                <label style="font-weight: bold;" for="">Số điện thoại</label>
+                <br>
+                <input type="text" style="width: 100%; border-radius: 5px; padding-left: 5px; padding: 6px;">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="name-account mt-3">
+                <label style="font-weight: bold;" for="">Tên tài khoản</label>
+                <br>
+                <input type="text" style="width: 100%; border-radius: 5px; padding-left: 5px; padding: 6px;">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="pass mt-3">
+                <label style="font-weight: bold;" for="">Mật khẩu</label>
+                <br>
+                <input type="text" style="width: 100%; border-radius: 5px; padding: 6px;">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="phone mt-3">
+                <label style="font-weight: bold;" for="">Số tiền</label>
+                <br>
+                <input type="text" placeholder="(0)" style="width: 100%; border-radius: 5px; padding: 6px;">
+            </div>
+        </div>
+    </div>
+    <div class="save-wrapper mt-4" style="text-align: center; cursor: pointer;">
+        <div class="save" style="background-color: #D8F275; color: black; border-radius: 50px; display: inline-block; padding: 7px 20px; font-weight: 500;">
+            <i class='bx bx-save'></i>
+            Lưu thông tin
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

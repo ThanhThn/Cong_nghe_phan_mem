@@ -1,0 +1,48 @@
+﻿@model Software.Models.ThucDon
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ThucDon</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenMon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenMon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnhMon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnhMon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LoaiMon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LoaiMon.MaLoaiMon)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaMon">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
