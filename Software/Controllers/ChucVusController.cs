@@ -58,14 +58,18 @@ namespace Software.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaChucVu,TenChucVu")] ChucVu chucVu)
         {
-            if (ModelState.IsValid)
+            ModelState.Remove("NhanViens");
+            if (!ModelState.IsValid)
             {
-                _context.Add(chucVu);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Log the errors to the output or console for debugging
+                return View(chucVu);
             }
-            return View(chucVu);
+
+            _context.Add(chucVu);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: ChucVus/Edit/5
         public async Task<IActionResult> Edit(int? id)

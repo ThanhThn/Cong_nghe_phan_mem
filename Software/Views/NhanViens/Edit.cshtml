@@ -3,55 +3,90 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="py-8 px-12">
+    <h2 class="text-[32px] text-Jaguar font-bold pl-5">THÔNG TIN NHÂN SỰ</h2>
+    <div class="bg-White rounded-2xl !mt-5 flex rounded-lg">
+        <ul class="[&_*]:text-xl [&_*]:font-medium [&_*]:text-Gray px-3.5 py-10 w-56">
+            <li>
+                <a class="bg-Lavender py-2 px-3.5 rounded-lg flex items-center justify-between" asp-action="Edit" asp-route-id="@Model.MaNV">
+                    <span class="!text-Jaguar">Chi tiết</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                        <path d="M8.5 6L11 3.5M11 3.5L8.5 1M11 3.5L1 3.5" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="py-2 px-3.5 rounded-lg flex items-center justify-between" asp-controller="TaiKhoanNhanViens" asp-action="@((bool)ViewData["HasAccount"] ? "Edit" : "Create")" asp-route-id="@ViewData["MaTK"]">
+                    <span>Tài khoản</span>
+                    <svg class="invisible" xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                        <path d="M8.5 6L11 3.5M11 3.5L8.5 1M11 3.5L1 3.5" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </li>
+            @{
+                if ((bool)ViewData["HasAccount"])
+                {
+                    <li>
+                        <a class="py-2 px-3.5 rounded-lg flex items-center justify-between" asp-controller="PhanQuyens" asp-action="Edit" asp-route-id="@ViewData["MaTK"]">
+                            <span>Phân quyền</span>
+                            <svg class="invisible" xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                                <path d="M8.5 6L11 3.5M11 3.5L8.5 1M11 3.5L1 3.5" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </li>
+                }
 
-<h1>Edit</h1>
+            }
+        </ul>
+        <div class="w-[3px] rounded-full bg-Cultured my-6"></div>
+        <div>
+            <h1>Edit</h1>
 
-<h4>NhanVien</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MaNV" />
-            <div class="form-group">
-                <label asp-for="TenNhanVien" class="control-label"></label>
-                <input asp-for="TenNhanVien" class="form-control" />
-                <span asp-validation-for="TenNhanVien" class="text-danger"></span>
+            <h4>NhanVien</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="MaNV" />
+                        <div class="form-group">
+                            <label asp-for="TenNhanVien" class="control-label"></label>
+                            <input asp-for="TenNhanVien" class="form-control" />
+                            <span asp-validation-for="TenNhanVien" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SoDienThoai" class="control-label"></label>
+                            <input asp-for="SoDienThoai" class="form-control" />
+                            <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DiaChi" class="control-label"></label>
+                            <input asp-for="DiaChi" class="form-control" />
+                            <span asp-validation-for="DiaChi" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="GioiTinh" /> @Html.DisplayNameFor(model => model.GioiTinh)
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ChungMinhThu" class="control-label"></label>
+                            <input asp-for="ChungMinhThu" class="form-control" />
+                            <span asp-validation-for="ChungMinhThu" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MaChucVu" class="control-label"></label>
+                            <select asp-for="MaChucVu" class="form-control" asp-items="ViewBag.MaChucVu"></select>
+                            <span asp-validation-for="MaChucVu" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="SoDienThoai" class="control-label"></label>
-                <input asp-for="SoDienThoai" class="form-control" />
-                <span asp-validation-for="SoDienThoai" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
-                <input asp-for="DiaChi" class="form-control" />
-                <span asp-validation-for="DiaChi" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="GioiTinh" /> @Html.DisplayNameFor(model => model.GioiTinh)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ChungMinhThu" class="control-label"></label>
-                <input asp-for="ChungMinhThu" class="form-control" />
-                <span asp-validation-for="ChungMinhThu" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaChucVu" class="control-label"></label>
-                <select asp-for="MaChucVu" class="form-control" asp-items="ViewBag.MaChucVu"></select>
-                <span asp-validation-for="MaChucVu" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

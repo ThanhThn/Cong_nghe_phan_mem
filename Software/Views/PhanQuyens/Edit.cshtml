@@ -4,146 +4,90 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2 style="color: #1F1E30; font-weight: bold; margin-left: 3%;">THÔNG TIN NHÂN SỰ</h2>
-<div class="row" style="background-color: white; height: 1000px; margin-left: 2%; border-radius: 10px;">
-    <div class="col-2" style="border-right: 2px solid #F3F3F5;">
-        <div class="mt-5">
-            <div class="detail" style="color: #76767F; cursor: pointer;">
-                Chi tiết
-            </div>
-            <div class="account" style="color: #76767F; margin: 20px 0; cursor: pointer;">
-                Tài khoản
-            </div>
-            <div class="decentralization" style="display: flex; align-items: center; background-color: #DEDEF7; color: #1F1E30; border-radius: 10px; cursor: pointer;">
-                Phân quyền
-                <i class='bx bx-right-arrow-alt' style="margin-left: 14%;"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-10">
-        <h4 class="mt-5">Phân quyền</h4>
-        <div class="" style="border: 1px solid black; border-radius: 10px; padding: 20px;">
-            <div class="usage-rights">
-                <h6 style="display: flex; align-items: center; font-size: 16px;">
-                    Quyền sử dụng
-                    <i style="background-color: #D8F275; margin-left: 10px; border-radius: 50%; padding: 3px; cursor: pointer;" class='bx bx-plus'></i>
-                </h6>
-
-                <div class="-choice-usage-right" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="background-color: white; border-radius: 10px; padding: 5px; width: 80%; border: 2px solid black;">
-                        <i class='bx bxs-down-arrow' style="margin-left: 97%; font-size: 10px;"></i>
-                    </div>
-                    <button style="background-color: #D8F275; border: none; padding: 7px 40px; border-radius: 10px; font-weight: bold;">Thêm</button>
+<div class="py-8 px-12">
+    <h2 class="text-[32px] text-Jaguar font-bold pl-5">THÔNG TIN NHÂN SỰ</h2>
+    <div class="bg-White rounded-2xl !mt-5 flex rounded-lg">
+        <ul class="[&_*]:text-xl [&_*]:font-medium [&_*]:text-Gray px-3.5 py-10 w-56">
+            <li>
+                <a class="py-2 px-3.5 rounded-lg flex items-center justify-between" asp-controller="NhanViens" asp-action="Edit" asp-route-id="">
+                    <span >Chi tiết</span>
+                    <svg class="invisible" xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                        <path d="M8.5 6L11 3.5M11 3.5L8.5 1M11 3.5L1 3.5" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="py-2 px-3.5 rounded-lg flex items-center justify-between" asp-controller="TaiKhoanNhanViens" asp-action="Edit" asp-route-id="">
+                    <span>Tài khoản</span>
+                    <svg class="invisible" xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                        <path d="M8.5 6L11 3.5M11 3.5L8.5 1M11 3.5L1 3.5" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="bg-Lavender py-2 px-3.5 rounded-lg flex items-center justify-between" asp-action="Edit" asp-route-id="">
+                    <span class="!text-Jaguar">Phân quyền</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="7" viewBox="0 0 13 7" fill="none">
+                        <path d="M8.5 6L11 3.5M11 3.5L8.5 1M11 3.5L1 3.5" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </li>
+                
+        </ul>
+        <div class="w-[3px] rounded-full bg-Cultured my-6"></div>
+        <div class="px-10 pt-12 pb-6 flex-1">
+            <h4 class="text-Jaguar font-medium text-[28px]">Phân quyền</h4>
+            <div class="border-[1px] border-Jaguar rounded-xl !py-5 px-7 mt-3.5">
+                <div class="flex gap-2.5 items-center">
+                    <span class="text-Jaguar text-base font-medium">Quyền sử dụng</span>
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" fill="#D8F275" stroke="#D8F275" stroke-width="2" />
+                            <path d="M12 15L12 9" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                            <path d="M15 12L9 12" stroke="#1F1E30" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
                 </div>
-
-            </div>
-            <table class="custom-table">
-                <tr>
-                    <th style="text-align: center; width: 10%;">STT</th>
-                    <th style="text-align: center;">Tên quyền sử dụng</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-            <button style="background-color: #D8F275; border: none; padding: 7px 40px; border-radius: 10px; font-weight: bold; margin-left: 81%; margin-top: 10px;">Submit</button>
-        </div>
-
-        <div class="" style="border: 1px solid black; border-radius: 10px; padding: 20px; margin-top: 30px;">
-            <div class="usage-rights">
-                <h6 style="display: flex; align-items: center; font-size: 16px;">
-                    Tạo quyền sử dụng mới
-
-                </h6>
-
-                <div class="name-usage-right" style="display: flex; align-items: center; margin-top: 20px;">
-                    <p style="font-size: 14px; width: 30%; font-weight: 500;">Tên quyền sử dụng</p>
-                    <div style="background-color: #F3F3F5; border-radius: 10px; padding: 18px; width: 100%;">
+                <div class="flex items-center gap-7 mt-2">
+                    <div class="bg-White rounded-full border-2 border-Jaguar relative flex-1 text-base font-medium text-Jaguar cursor-pointer">
+                        <div class="selected-premission flex items-center justify-between py-1.5 px-3.5 min-h-9">
+                            <span></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+                                <path d="M5.17065 5.47051L7.84265 1.55951C8.33216 0.843018 7.62025 0 6.52567 0L1.47433 0C0.379753 0 -0.332163 0.843018 0.157349 1.55951L2.82935 5.4705C3.31168 6.1765 4.68832 6.1765 5.17065 5.47051Z" fill="#1F1E30" />
+                            </svg>
+                        </div>
+                        <ul class="list-premission shadow-lg hidden absolute z-10 top-[120%] left-0 bg-Cultured w-full [&>*]:px-3.5 [&>*]:py-1.5 rounded-xl overflow-hidden">
+                            <li class="list-premission-item hover:bg-Buster">Giới tính</li>
+                            <li class="list-premission-item hover:bg-Buster" id="1">Nam</li>
+                            <li class="list-premission-item hover:bg-Buster" id="0">Nữ</li>
+                        </ul>
                     </div>
+                    <button class="bg-Buster text-Jaguar text-base font-medium px-6 py-1.5 rounded-lg">Thêm</button>
                 </div>
-
-                <p style="margin-bottom: 10px; font-weight: 500; font-size: 14px;">Chức năng</p>
-                <div class="-choice-usage-right" style="display: flex; justify-content: space-between; align-items: center;">
-
-                    <div style="background-color: #F3F3F5; border-radius: 10px; padding: 5px; width: 80%;">
-                        <i class='bx bxs-down-arrow' style="margin-left: 97%; font-size: 10px;"></i>
-                    </div>
-                    <button style="background-color: #D8F275; border: none; padding: 7px 40px; border-radius: 10px; font-weight: bold; opacity: 0.7;">Thêm</button>
+                <div class="relative overflow-x-auto rounded-lg pt-7">
+                    <table class="w-full text-sm text-left rtl:text-right text-Jaguar font-medium overflow-hidden rounded-lg">
+                        <thead class="bg-Bud">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 w-fit">STT</th>
+                                <th scope="col" class="px-6 py-3">Tên quyền sử dụng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <th scope="row" class="px-6 py-4  w-fit"></th>
+                                <td class="px-6 py-4"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
             </div>
-            <table class="custom-table">
-                <tr>
-                    <th style="text-align: center; width: 10%;">STT</th>
-                    <th style="text-align: center;">Tên chức năng</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-            <button style="background-color: #D8F275; border: none; padding: 7px 40px; border-radius: 10px; font-weight: bold; margin-left: 81%; margin-top: 10px; opacity: 0.7;">Submit</button>
+            <div></div>
         </div>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -4,19 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Software</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Software.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/output.css" asp-append-version="true" />
 </head>
-<body>
-    <div class="container-fluid">
-        <div class="row" style="background-color: rgb(236, 233, 233)">
-            <div class="col-1" style="background-color: black; height: 100vh;">
-            </div>
-            <div class="col-11">
-                @RenderBody()
-            </div>
-        </div>
+<body class="bg-Cultured">
+    <div class="w-28 bg-Jaguar h-screen fixed top-0 left-0">
+    </div>
+    <div class="ml-28 relative">
+        @RenderBody()
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

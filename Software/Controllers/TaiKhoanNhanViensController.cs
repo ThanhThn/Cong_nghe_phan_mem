@@ -46,9 +46,9 @@ namespace Software.Controllers
         }
 
         // GET: TaiKhoanNhanViens/Create
-        public IActionResult Create()
+        public IActionResult Create(string id)
         {
-            ViewData["MaNV"] = new SelectList(_context.NhanVien, "MaNV", "MaNV");
+            ViewData["MaNV"] = id;
             return View();
         }
 
@@ -59,18 +59,21 @@ namespace Software.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaTK,TenTK,MaKhau,MaNV")] TaiKhoanNhanVien taiKhoanNhanVien)
         {
-            if (ModelState.IsValid)
+            bool hasNameAccount = _context.TaiKhoanNhanVien.Any(k => k.TenTK == taiKhoanNhanVien.TenTK);
+            ModelState.Remove("NhanVien");
+            ModelState.Remove("PhanQuyens");
+            if (ModelState.IsValid && !hasNameAccount)
             {
                 _context.Add(taiKhoanNhanVien);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Edit", "TaiKhoanNhanVien", new { id = taiKhoanNhanVien.MaTK}) ;
             }
-            ViewData["MaNV"] = new SelectList(_context.NhanVien, "MaNV", "MaNV", taiKhoanNhanVien.MaNV);
+            ViewData["MaNV"] = taiKhoanNhanVien.MaNV;
             return View(taiKhoanNhanVien);
         }
 
         // GET: TaiKhoanNhanViens/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, string idNV)
         {
             if (id == null || _context.TaiKhoanNhanVien == null)
             {

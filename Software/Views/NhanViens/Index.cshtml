@@ -2,252 +2,150 @@
 
 @{
     ViewData["Title"] = "Index";
+    var chucVuList = ViewData["ChucVu"] as List<Software.Models.ChucVu>;
+    int count = 1;
 }
-
-<div class="main-tracuu" style="background-color: white; padding: 25px; border-radius: 20px; height: 900px;">
-    <div class="header-tracuu" style="display: flex; justify-content: space-between; align-items: center;">
-        <input type="text" placeholder="Họ tên, địa chỉ, số điện thoại" style="border: 0; border-radius: 20px; background-color: rgb(236, 233, 233); width: 40%; padding: 6px 10px;">
-        <div class="sex">
-            <div class="sex-attribute" style="background-color: rgb(236, 233, 233); border-radius: 20px; padding: 6px 10px; position: relative;">
-                Giới tính
-                <i class='bx bxs-down-arrow'></i>
-
-                <ul class="list-sex">
-                    <li class="list-sex-item">Nam</li>
-                    <li class="list-sex-item">Nữ</li>
-                </ul>
+<div class="main-tracuu bg-White h-fit m-12 px-12 py-10 rounded-2xl">
+    <div class="flex gap-4 items-center" style="display: flex; justify-content: space-between; align-items: center;">
+        <input type="text" id="text-search" placeholder="Họ tên, địa chỉ, số điện thoại,...." class="rounded-full bg-Cultured text-lg font-medium py-3.5 !px-5 focus:outline-none flex-1">
+        <div class="sex-attribute bg-Cultured rounded-full relative w-[122px] text-lg font-medium text-Jaguar cursor-pointer">
+            <div class="selected-sex flex items-center justify-between p-3.5">
+                <span>Giới tính</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+                    <path d="M5.17065 5.47051L7.84265 1.55951C8.33216 0.843018 7.62025 0 6.52567 0L1.47433 0C0.379753 0 -0.332163 0.843018 0.157349 1.55951L2.82935 5.4705C3.31168 6.1765 4.68832 6.1765 5.17065 5.47051Z" fill="#1F1E30" />
+                </svg>
             </div>
-
+            <ul class="list-sex shadow-lg hidden absolute z-10 top-[120%] left-0 bg-Cultured w-[122px] [&>*]:px-3.5 [&>*]:py-1 rounded-xl overflow-hidden">
+                <li class="list-sex-item hover:bg-Buster">Giới tính</li>
+                <li class="list-sex-item hover:bg-Buster" id="1">Nam</li>
+                <li class="list-sex-item hover:bg-Buster" id="0">Nữ</li>
+            </ul>
         </div>
-        <div class="position">
-            <div class="position-attribute" style="background-color: rgb(236, 233, 233); border-radius: 20px; width: 220px; padding: 6px; position: relative;">
-                Chức vụ
-                <i style="margin-left: 60%;" class='bx bxs-down-arrow'></i>
-
-                <ul class="list-position">
-                    <li class="list-position-item">Nhân viên thu ngân</li>
-                    <li class="list-position-item">Bảo vệ</li>
-                    <li class="list-position-item">Phục vụ</li>
-                    <li class="list-position-item">Đầu bếp</li>
-                    <li class="list-position-item">Nhân viên pha chế</li>
-                </ul>
+        <div class="position-attribute bg-Cultured rounded-full relative w-72 text-lg font-medium text-Jaguar cursor-pointer">
+            <div class="selected-position flex items-center justify-between p-3.5">
+                <span>Chức vụ</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+                    <path d="M5.17065 5.47051L7.84265 1.55951C8.33216 0.843018 7.62025 0 6.52567 0L1.47433 0C0.379753 0 -0.332163 0.843018 0.157349 1.55951L2.82935 5.4705C3.31168 6.1765 4.68832 6.1765 5.17065 5.47051Z" fill="#1F1E30" />
+                </svg>
             </div>
-
-
+            <ul class="list-position hidden absolute z-10 top-[120%] left-0 bg-Cultured w-72 [&>*]:px-3.5 [&>*]:py-1 rounded-xl overflow-hidden shadow-lg">
+                <li class="list-position-item hover:bg-Buster" id="0">Chức vụ</li>
+                @foreach (var chucVu in chucVuList)
+                {
+                    <li class="list-position-item hover:bg-Buster" id="@chucVu.MaChucVu">@chucVu.TenChucVu</li>
+                }
+            </ul>
         </div>
-
-        <button class="btn-search" type="button" style="background-color: #D8F275; color: black; border: 0; border-radius: 20px; padding: 5px 25px; font-weight: 500;">
-            <i class='bx bx-search-alt'></i>
+        <button id="button-search" class="bg-Buster text-Jaguar py-3.5 rounded-full text-lg font-medium flex gap-1.5 px-5 items-center" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <circle cx="13.5" cy="13.5" r="9" stroke="#1F1E30" stroke-width="3" />
+                <path d="M12.75 9C12.2575 9 11.7699 9.097 11.3149 9.28545C10.86 9.47391 10.4466 9.75013 10.0983 10.0983C9.75013 10.4466 9.47391 10.86 9.28545 11.3149C9.097 11.7699 9 12.2575 9 12.75" stroke="#1F1E30" stroke-width="3" stroke-linecap="round" />
+                <path d="M23.5 23.5L21.25 21.25" stroke="#1F1E30" stroke-width="3" stroke-linecap="round" />
+            </svg>
             Tìm kiếm
         </button>
     </div>
-
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Họ tên</th>
-                <th scope="col">Giới tính</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Chứng minh thư</th>
-                <th scope="col">Số điện thoại</th>
-                <th scope="col">Chức vụ</th>
-                <th scope="col">Trạng thái hoạt động</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <nav style="margin-left: 40%;" aria-label="Page navigation example">
-        <ul class="pagination" style="margin: 0; display: flex; align-items: center;">
-            <li class="page-item">
-                <a style="border: 0; background-color: black; color: white; border-radius: 50%;" class="page-link" href="#" aria-label="Previous">
-                    <i class='bx bx-chevron-left'></i>
-                </a>
-            </li>
-            <div class="pagnation" style="display: flex; margin: 0 10px; background-color: black; padding: 4px; border-radius: 20px;">
-
-            <li class="page-item"><a style="border: 0; background-color: #D8F275; color: black; border-radius: 50%;" class="page-link" href="#">1</a></li>
-            <li class="page-item"><a style="border: 0; background-color: black; color: white; font-weight: 100; border-radius: 50%; margin: 0 10px;" class="page-link" href="#">2</a></li>
-            <li class="page-item"><a style="border: 0; background-color: black; color: white; font-weight: 100; border-radius: 50%;" class="page-link" href="#">3</a></li>
-            <li class="page-item">
-
+    <div class="relative overflow-x-auto rounded-lg pt-7">
+        <table class="w-full text-lg text-left rtl:text-right text-Jaguar font-medium overflow-hidden rounded-lg">
+            <thead class="bg-Bud">
+                <tr>
+                    <th scope="col" class="px-6 py-3">STT</th>
+                    <th scope="col" class="px-6 py-3">Họ tên</th>
+                    <th scope="col" class="px-6 py-3">Giới tính</th>
+                    <th scope="col" class="px-6 py-3">Địa chỉ</th>
+                    <th scope="col" class="px-6 py-3">Chứng minh thư</th>
+                    <th scope="col" class="px-6 py-3">Số điện thoại</th>
+                    <th scope="col" class="px-6 py-3">Chức vụ</th>
+                    <th scope="col" class="px-6 py-3"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var nhanVien in Model)
+                {
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <th scope="row" class="px-6 py-4">@count</th>
+                        <td class="px-6 py-4">@nhanVien.TenNhanVien</td>
+                        <td class="px-6 py-4">@((nhanVien.GioiTinh ? "Nam" : "Nữ"))</td>
+                        <td class="px-6 py-4">@nhanVien.DiaChi</td>
+                        <td class="px-6 py-4">@nhanVien.ChungMinhThu</td>
+                        <td class="px-6 py-4">@nhanVien.SoDienThoai</td>
+                        <td class="px-6 py-4">@nhanVien.ChucVu.TenChucVu</td>
+                        <td class="px-6 py-4"><a asp-action="Edit" asp-route-id="@nhanVien.MaNV">Xem</a></td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-<a style="border: 0; background-color: black; color: white; border-radius: 50%;" class="page-link" href="#" aria-label="Previous">
-    <i class='bx bx-chevron-right'></i>
-</a>
-                        </li>
-                      </ul>
-                    </nav>
-                </div>
+
+<script>
+    $(document).ready(function () {
+        let positionList = $("ul.list-position");
+        let positionChildrent = positionList.children();
+        let positionSelected = $(".selected-position");
+        let sexList = $("ul.list-sex");
+        let sexChildrent = sexList.children();
+        let sexSelected = $(".selected-sex");
+        let requestCode = {}
+
+        positionSelected.click(function() {
+            positionList.toggleClass("hidden");
+        });
+        positionChildrent.click(function () {
+            positionSelected.find("span").text($(this).text());
+            positionList.addClass("hidden");
+            requestCode["idPosition"] = $(this).attr("id")
+        });
+
+        sexSelected.click(() => {
+            sexList.toggleClass("hidden");
+        });
+        sexChildrent.click(function () {
+            sexSelected.find("span").text($(this).text());
+            sexList.addClass("hidden");
+            requestCode["idSex"] = $(this).attr("id")
+        });
+        $("#button-search").click(() => {
+            requestCode["textSearch"] = $("#text-search").val();
+            $.ajax({
+                url: '@Url.Action("Search", "NhanViens")',
+                type: 'GET',
+                data: requestCode,
+                success: function (data) {
+                    $('table tbody').empty();
+                    $.each(data, function (index, item) {
+                        let sex = item.gioiTinh ? "Nam" : "Nữ"; // Giả sử bạn có thuộc tính gioiTinh
+                        let i = index + 1;
+                        let rowData = `<tr class="bg-white border-b hover:bg-gray-50">
+                            <th scope="row" class="px-6 py-4">${i}</th>
+                            <td class="px-6 py-4">${item.tenNhanVien}</td>
+                            <td class="px-6 py-4">${sex}</td>
+                            <td class="px-6 py-4">${item.diaChi}</td>
+                            <td class="px-6 py-4">${item.chungMinhThu}</td>
+                            <td class="px-6 py-4">${item.soDienThoai}</td>
+                            <td class="px-6 py-4">${item.tenChucVu}</td>
+                            <td class="px-6 py-4">
+                                <a href="/NhanViens/Edit/${item.maNV}">Xem</a>
+                            </td>
+                        </tr>`;
+                        $('table tbody').append(rowData);
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            })
+        })
+
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.list-sex').length && !$(event.target).closest('.selected-sex').length && !sexList.hasClass("hidden")) {
+                sexList.addClass("hidden");
+            }
+            if (!$(event.target).closest('.list-position').length && !$(event.target).closest('.selected-position').length && !positionList.hasClass("hidden")) {
+                positionList.addClass("hidden");
+            }
+        });
+    });
+</script>

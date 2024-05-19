@@ -11298,11 +11298,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CNPM\\Software\\Software.csproj",
+      "projectUniqueName": "D:\\CNPM\\Cong_nghe_phan_mem\\Software\\Software.csproj",
       "projectName": "Software",
-      "projectPath": "D:\\CNPM\\Software\\Software.csproj",
+      "projectPath": "D:\\CNPM\\Cong_nghe_phan_mem\\Software\\Software.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\CNPM\\Software\\obj\\",
+      "outputPath": "D:\\CNPM\\Cong_nghe_phan_mem\\Software\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

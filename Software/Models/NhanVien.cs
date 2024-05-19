@@ -11,6 +11,7 @@
         public int MaChucVu { get; set; }
 
         public ChucVu ChucVu { get; set; }
+
         public TaiKhoanNhanVien TaiKhoanNhanVien { get; set; }
     }
 

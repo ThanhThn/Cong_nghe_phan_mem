@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Software.Data;
 using Software.Models;
 
@@ -23,6 +28,8 @@ namespace Software.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.NhanVien.Include(n => n.ChucVu);
+            List<ChucVu> listChucVu = _context.ChucVu.ToList();
+            ViewData["ChucVu"] = listChucVu;
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -59,15 +66,20 @@ namespace Software.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaNV,TenNhanVien,SoDienThoai,DiaChi,GioiTinh,ChungMinhThu,MaChucVu")] NhanVien nhanVien)
         {
+            ModelState.Remove("ChucVu");
+            ModelState.Remove("TaiKhoanNhanVien");
             if (ModelState.IsValid)
             {
                 _context.Add(nhanVien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaChucVu"] = new SelectList(_context.ChucVu, "MaChucVu", "MaChucVu", nhanVien.MaChucVu);
+
+            ViewData["MaChucVu"] = new SelectList(_context.ChucVu, "MaChucVu", "TenChucVu", nhanVien.MaChucVu);
             return View(nhanVien);
         }
+
+
 
         // GET: NhanViens/Edit/5
         public async Task<IActionResult> Edit(string id)
@@ -82,6 +94,14 @@ namespace Software.Controllers
             {
                 return NotFound();
             }
+            bool hasAccount = _context.TaiKhoanNhanVien.Any(t => t.MaNV == id);
+            int maTK = 0;
+            if (hasAccount)
+            {
+                maTK = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaNV == id)?.MaTK ?? 0;
+            }
+            ViewData["HasAccount"] = hasAccount;
+            ViewData["MaTK"] = maTK;
             ViewData["MaChucVu"] = new SelectList(_context.ChucVu, "MaChucVu", "MaChucVu", nhanVien.MaChucVu);
             return View(nhanVien);
         }
@@ -158,6 +178,34 @@ namespace Software.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<JsonResult> Search(string textSearch, int? idSex, int? idPosition)
+        {
+            StringBuilder SqlQuery = new StringBuilder("SELECT nv.MaNV, nv.TenNhanVien, nv.ChungMinhThu, nv.GioiTinh, nv.SoDienThoai, nv.DiaChi, nv.MaChucVu, cv.TenChucVu FROM NhanVien as nv JOIN ChucVu as cv ON nv.MaChucVu = cv.MaChucVu WHERE 1 = 1");
+            var parameters = new List<SqlParameter>();
+
+            if (!string.IsNullOrEmpty(textSearch))
+            {
+                SqlQuery.Append(" AND (nv.TenNhanVien LIKE @textSearch OR nv.ChungMinhThu LIKE @textSearch OR nv.SoDienThoai LIKE @textSearch OR nv.DiaChi LIKE @textSearch)");
+                parameters.Add(new SqlParameter("@textSearch", $"%{textSearch}%"));
+            }
+            if (idSex.HasValue)
+            {
+                SqlQuery.Append(" AND nv.GioiTinh = @idSex");
+                parameters.Add(new SqlParameter("@idSex", idSex));
+            }
+            if (idPosition.HasValue && idPosition != 0)
+            {
+                SqlQuery.Append(" AND nv.MaChucVu = @idPosition");
+                parameters.Add(new SqlParameter("@idPosition", idPosition));
+            }
+
+            var nhanVien = await _context.Set<NhanVienChucVuDTO>()
+                                 .FromSqlRaw(SqlQuery.ToString(), parameters.ToArray())
+                                 .ToListAsync();
+
+            return Json(nhanVien);
         }
 
         private bool NhanVienExists(string id)

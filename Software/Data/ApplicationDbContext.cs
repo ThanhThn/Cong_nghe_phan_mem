@@ -100,7 +100,9 @@ namespace Software.Data
                 .HasForeignKey(p => p.MaQuyen);
 
             modelBuilder.Entity<DoanhThuDichVuGiaiTri>().HasKey(d => d.MaDoanhThu);
-        }
+
+            modelBuilder.Entity<NhanVienChucVuDTO>().HasNoKey().ToTable(nameof(NhanVienChucVuDTO));
+    }
 
         public DbSet<KhachHang> KhachHang { get; set; }
         public DbSet<TaiKhoan> TaiKhoan { get; set; }
