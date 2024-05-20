@@ -115,7 +115,7 @@
                 success: function (data) {
                     $('table tbody').empty();
                     $.each(data, function (index, item) {
-                        let sex = item.gioiTinh ? "Nam" : "Nữ"; // Giả sử bạn có thuộc tính gioiTinh
+                        let sex = item.gioiTinh ? "Nam" : "Nữ";
                         let i = index + 1;
                         let rowData = `<tr class="bg-white border-b hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4">${i}</th>

@@ -11,7 +11,7 @@ CREATE TABLE TaiKhoan(
 	TenTK varchar(max) not null,
 	MatKhau varchar(max),
 	SoDu money, 
-	MaKH int FOREIGN KEY REFERENCES KhachHang(MaKH)
+	MaKH int FOREIGN KEY REFERENCES KhachHang(MaKH) not null,
 )
 
 CREATE TABLE ChucVu(
@@ -26,7 +26,7 @@ CREATE TABLE NhanVien(
 	DiaChi nvarchar(max),
 	GioiTinh bit not null,
 	ChungMinhThu varchar(12) not null,
-	MaChucVu int FOREIGN KEY REFERENCES ChucVu(MaChucVu),
+	MaChucVu int FOREIGN KEY REFERENCES ChucVu(MaChucVu) not null,
 	Constraint CHECK_CMT CHECK (len(ChungMinhThu) BETWEEN 9 AND 12)
 )
 
@@ -46,19 +46,19 @@ CREATE TABLE ThucDon(
 	DonGia money not null,
 	AnhMon image,
 	TinhTrang bit not null,
-	MaLoaiMon int FOREIGN KEY REFERENCES LoaiMon(MaLoaiMon)
+	MaLoaiMon int FOREIGN KEY REFERENCES LoaiMon(MaLoaiMon) not null
 )
 
 CREATE TABLE HoaDon(
 	MaHD varchar(10) primary key, 
 	ThoiGian datetime not null,
 	TongTien money not null,
-	MaMT varchar(10) FOREIGN KEY REFERENCES MayTinh(MaMT),
+	MaMT varchar(10) FOREIGN KEY REFERENCES MayTinh(MaMT) not null,
 )
 
 CREATE TABLE ChiTietHoaDon(
-	MaHD varchar(10) FOREIGN KEY REFERENCES HoaDon(MaHD),
-	MaMon int  FOREIGN KEY REFERENCES ThucDon(MaMon),
+	MaHD varchar(10) FOREIGN KEY REFERENCES HoaDon(MaHD) not null,
+	MaMon int  FOREIGN KEY REFERENCES ThucDon(MaMon) not null,
 	SoLuong int not null,
 	TongTien money not null,
 	DonGia money not null,
@@ -69,7 +69,7 @@ CREATE TABLE ThamSo(
 	MaThamSo varchar(5) primary key,
 	TenThamSo nvarchar(max) not null,
 	DonVi nvarchar(15),
-	GiaTri float not null
+	GiaTri float not null,
 	TinhTrang bit not null
 )
 
@@ -77,11 +77,12 @@ CREATE TABLE TaiKhoanNhanVien(
 	MaTK int PRIMARY KEY IDENTITY(1, 1),
 	TenTK varchar(max) not null,
 	MaKhau varchar(max),
-	MaNV varchar(9) FOREIGN KEY REFERENCES NhanVien(MaNV)
+	MaNV varchar(9) FOREIGN KEY REFERENCES NhanVien(MaNV) not null
 )
 
 CREATE TABLE ChucNang(
 	MaChucNang int PRIMARY KEY IDENTITY(1, 1),
+	TenChucNang nvarchar(50),
 	DuongDanChucNang varchar(max) not null, 
 )
 
@@ -90,15 +91,16 @@ CREATE TABLE Quyen (
 	TenQuyen nvarchar(max) not null
 )
 
+
 CREATE TABLE LienKetQuyen(
-	MaChucNang int FOREIGN KEY REFERENCES ChucNang(MaChucNang),
-	MaQuyen int FOREIGN KEY REFERENCES Quyen(MaQuyen),
+	MaChucNang int FOREIGN KEY REFERENCES ChucNang(MaChucNang) not null,
+	MaQuyen int FOREIGN KEY REFERENCES Quyen(MaQuyen) not null,
 	primary key (MaChucNang, MaQuyen)
 )
 
 CREATE TABLE PhanQuyen(
-	MaQuyen int FOREIGN KEY REFERENCES Quyen(MaQuyen),
-	MaTK int FOREIGN KEY REFERENCES TaiKhoanNhanVien(MaTK)
+	MaQuyen int FOREIGN KEY REFERENCES Quyen(MaQuyen) not null,
+	MaTK int FOREIGN KEY REFERENCES TaiKhoanNhanVien(MaTK) not null,
 	primary key (MaTK, MaQuyen)
 );
 

@@ -66,8 +66,6 @@ namespace Software.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaNV,TenNhanVien,SoDienThoai,DiaChi,GioiTinh,ChungMinhThu,MaChucVu")] NhanVien nhanVien)
         {
-            ModelState.Remove("ChucVu");
-            ModelState.Remove("TaiKhoanNhanVien");
             if (ModelState.IsValid)
             {
                 _context.Add(nhanVien);
@@ -95,10 +93,14 @@ namespace Software.Controllers
                 return NotFound();
             }
             bool hasAccount = _context.TaiKhoanNhanVien.Any(t => t.MaNV == id);
-            int maTK = 0;
+            int maTK;
             if (hasAccount)
             {
-                maTK = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaNV == id)?.MaTK ?? 0;
+                maTK = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaNV == id).MaTK;
+            }
+            else
+            {
+                maTK = _context.TaiKhoanNhanVien.Max(k => k.MaTK) + 1;
             }
             ViewData["HasAccount"] = hasAccount;
             ViewData["MaTK"] = maTK;

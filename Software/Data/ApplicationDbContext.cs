@@ -25,13 +25,14 @@ namespace Software.Data
                 .HasForeignKey(t => t.MaKH);
 
             modelBuilder.Entity<ChucVu>().HasKey(c => c.MaChucVu);
+            modelBuilder.Entity<ChucVu>().HasMany(c => c.NhanViens).WithOne(t => t.ChucVu).HasForeignKey(t => t.MaChucVu);
 
             modelBuilder.Entity<NhanVien>()
                 .HasKey(n => n.MaNV);
             modelBuilder.Entity<NhanVien>()
-                .HasOne(n => n.ChucVu)
-                .WithMany(c => c.NhanViens)
-                .HasForeignKey(n => n.MaChucVu);
+                .HasOne(t => t.TaiKhoan)
+                .WithOne(t => t.NhanVien)
+                .HasForeignKey<TaiKhoanNhanVien>(t => t.MaNV);
             modelBuilder.Entity<NhanVien>()
                 .HasCheckConstraint("CHECK_CMT", "LEN(ChungMinhThu) BETWEEN 9 AND 12");
 
@@ -70,7 +71,7 @@ namespace Software.Data
                 .HasKey(t => t.MaTK);
             modelBuilder.Entity<TaiKhoanNhanVien>()
                 .HasOne(t => t.NhanVien)
-                .WithOne(n => n.TaiKhoanNhanVien)
+                .WithOne(n => n.TaiKhoan)
                 .HasForeignKey<TaiKhoanNhanVien>(t => t.MaNV);
 
             modelBuilder.Entity<ChucNang>().HasKey(c => c.MaChucNang);

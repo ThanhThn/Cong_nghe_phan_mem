@@ -58,7 +58,6 @@ namespace Software.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaChucVu,TenChucVu")] ChucVu chucVu)
         {
-            ModelState.Remove("NhanViens");
             if (!ModelState.IsValid)
             {
                 // Log the errors to the output or console for debugging

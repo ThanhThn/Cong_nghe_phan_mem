@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Software.Data;
 using Software.Models;
 
@@ -75,19 +77,27 @@ namespace Software.Controllers
         // GET: PhanQuyens/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-/*            if (id == null || _context.PhanQuyen == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var phanQuyen = await _context.PhanQuyen.FindAsync(id);
-            if (phanQuyen == null)
+            if (_context.PhanQuyen == null)
             {
-                return NotFound();
+                return Problem("Entity set 'ApplicationDbContext.PhanQuyen' is null.");
             }
-            ViewData["MaQuyen"] = new SelectList(_context.Quyen, "MaQuyen", "MaQuyen", phanQuyen.MaQuyen);
-            ViewData["MaTK"] = new SelectList(_context.TaiKhoanNhanVien, "MaTK", "MaTK", phanQuyen.MaTK);*/
-            return View(/*phanQuyen*/);
+
+            string sqlQuery = "SELECT * FROM PhanQuyen WHERE MaTK = @id";
+            SqlParameter parameter = new SqlParameter("@id", id);
+            var phanQuyen = await _context.PhanQuyen.FromSqlRaw(sqlQuery, parameter).ToListAsync();
+            ViewData["MaTK"] = id;
+            ViewData["MaNV"] = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaTK == id).MaNV;
+            if (phanQuyen == null || !phanQuyen.Any())
+            {
+                return View();
+            }
+
+            return View(phanQuyen);
         }
 
         // POST: PhanQuyens/Edit/5

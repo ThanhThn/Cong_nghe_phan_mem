@@ -12,7 +12,7 @@ using Software.Data;
 namespace Software.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240518065322_Database")]
+    [Migration("20240520144646_Database")]
     partial class Database
     {
         /// <inheritdoc />
@@ -58,6 +58,10 @@ namespace Software.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaChucNang"));
 
                     b.Property<string>("DuongDanChucNang")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenChucNang")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -225,6 +229,41 @@ namespace Software.Migrations
                         {
                             t.HasCheckConstraint("CHECK_CMT", "LEN(ChungMinhThu) BETWEEN 9 AND 12");
                         });
+                });
+
+            modelBuilder.Entity("Software.Models.NhanVienChucVuDTO", b =>
+                {
+                    b.Property<string>("ChungMinhThu")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiaChi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("GioiTinh")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaChucVu")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaNV")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SoDienThoai")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenChucVu")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenNhanVien")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("NhanVienChucVuDTO", (string)null);
                 });
 
             modelBuilder.Entity("Software.Models.PhanQuyen", b =>
@@ -465,7 +504,7 @@ namespace Software.Migrations
             modelBuilder.Entity("Software.Models.TaiKhoanNhanVien", b =>
                 {
                     b.HasOne("Software.Models.NhanVien", "NhanVien")
-                        .WithOne("TaiKhoanNhanVien")
+                        .WithOne("TaiKhoan")
                         .HasForeignKey("Software.Models.TaiKhoanNhanVien", "MaNV")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -516,8 +555,7 @@ namespace Software.Migrations
 
             modelBuilder.Entity("Software.Models.NhanVien", b =>
                 {
-                    b.Navigation("TaiKhoanNhanVien")
-                        .IsRequired();
+                    b.Navigation("TaiKhoan");
                 });
 
             modelBuilder.Entity("Software.Models.Quyen", b =>

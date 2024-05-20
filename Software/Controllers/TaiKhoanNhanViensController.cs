@@ -60,13 +60,11 @@ namespace Software.Controllers
         public async Task<IActionResult> Create([Bind("MaTK,TenTK,MaKhau,MaNV")] TaiKhoanNhanVien taiKhoanNhanVien)
         {
             bool hasNameAccount = _context.TaiKhoanNhanVien.Any(k => k.TenTK == taiKhoanNhanVien.TenTK);
-            ModelState.Remove("NhanVien");
-            ModelState.Remove("PhanQuyens");
             if (ModelState.IsValid && !hasNameAccount)
             {
                 _context.Add(taiKhoanNhanVien);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Edit", "TaiKhoanNhanVien", new { id = taiKhoanNhanVien.MaTK}) ;
+                return RedirectToAction("Edit", "TaiKhoanNhanViens", new { id = taiKhoanNhanVien.MaTK}) ;
             }
             ViewData["MaNV"] = taiKhoanNhanVien.MaNV;
             return View(taiKhoanNhanVien);
