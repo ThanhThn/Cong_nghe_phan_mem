@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var listChucNang = ViewData["chucNang"] as List<Software.Models.ChucNang>;
 }
 
 <div class="py-8 px-12">
@@ -49,7 +50,7 @@
                     </button>
                 </div>
                 <div class="flex items-center gap-7 mt-2">
-                    <div class="bg-White rounded-full border-2 border-Jaguar relative flex-1 text-base font-medium text-Jaguar cursor-pointer">
+                    <div class="bg-White rounded-lg border-2 border-Jaguar relative flex-1 text-base font-medium text-Jaguar cursor-pointer">
                         <div class="selected-premission flex items-center justify-between py-1.5 px-3.5 min-h-9">
                             <span></span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
@@ -79,7 +80,45 @@
                     </table>
                 </div>
             </div>
-            <div></div>
+            <div class="border-[1px] border-Jaguar rounded-xl !py-5 px-7 mt-7">
+                <span class="text-Jaguar text-base font-medium">Tạo quyền sử dụng mới</span>
+                <div class="flex items-center mt-3.5 gap-6">
+                    <span class="text-sm font-medium text-Jaguar">Tên quyền sử dụng</span>
+                    <input class="flex-1 focus:outline-none py-1.5 px-3.5 border-2 border-Jaguar text-base font-medium text-Jaguar rounded-lg" />
+                </div>
+                <div class="!mt-5">
+                    <span class="text-sm font-medium text-Jaguar">Chức năng</span>
+                    <div class="flex items-center gap-7 mt-3">
+                    <div class="bg-White rounded-lg border-2 border-Jaguar relative flex-1 text-base font-medium text-Jaguar cursor-pointer">
+                        <div class="selected-function flex items-center justify-between py-1.5 px-3.5 min-h-9">
+                            <span></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+                                <path d="M5.17065 5.47051L7.84265 1.55951C8.33216 0.843018 7.62025 0 6.52567 0L1.47433 0C0.379753 0 -0.332163 0.843018 0.157349 1.55951L2.82935 5.4705C3.31168 6.1765 4.68832 6.1765 5.17065 5.47051Z" fill="#1F1E30" />
+                            </svg>
+                        </div>
+                        <ul class="list-function shadow-lg hidden absolute z-10 top-[120%] left-0 bg-Cultured w-full [&>*]:px-3.5 [&>*]:py-1.5 rounded-xl overflow-hidden">
+                                @foreach (var chucNang in listChucNang)
+                                {
+                                    <li class="list-premission-item hover:bg-Buster" id="@chucNang.MaChucNang">@chucNang.TenChucNang</li>
+                                }
+                        </ul>
+                    </div>
+                    <button id="function-button" class="bg-Buster text-Jaguar text-base font-medium px-6 py-1.5 rounded-lg">Thêm</button>
+                    </div>
+                </div>
+                <div class="relative overflow-x-auto rounded-lg pt-7">
+                    <table id="table-function" class="w-full text-sm text-left rtl:text-right text-Jaguar font-medium overflow-hidden rounded-lg">
+                        <thead class="bg-Bud">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 w-fit">STT</th>
+                                <th scope="col" class="px-6 py-3">Tên chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -89,3 +128,56 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+<script>
+    $(document).ready(function () {
+        let selectedFunction = $(".selected-function");
+        let listFunction = $(".list-function");
+        let listFunctionChildrent = listFunction.children();
+        let listFunctionClone = listFunction.clone();
+        let btnFunction = $("#function-button");
+        let tableFunction = $("#table-function");
+        let sttFunction = 0;
+        let selectFunction;
+
+        selectedFunction.click(() => {
+            listFunction.toggleClass("hidden");
+        });
+
+        listFunctionChildrent.click(function () {
+            selectedFunction.find("span").text($(this).text());
+            selectFunction = $(this);
+            listFunction.addClass("hidden");
+        });
+
+        btnFunction.click(() => {
+            if (selectFunction === undefined) return;
+            sttFunction += 1;
+            let tr = `
+                <tr class="bg-white border-b hover:bg-gray-50">
+                    <th scope="row" class="px-6 py-4 w-fit">${sttFunction}</th>
+                    <td class="px-6 py-4">${selectFunction.text()}</td>
+                </tr>`;
+            tableFunction.find("tbody").append(tr);
+            selectedFunction.find("span").text("");
+            listFunctionChildrent.each(function () {
+                if ($(this).is(selectFunction)) {
+                    $(this).remove();
+                    selectFunction = undefined;
+                }
+            });
+
+            listFunctionChildrent = listFunction.children();
+        });
+
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.list-function').length &&
+                !$(event.target).closest('.selected-function').length &&
+                !listFunction.hasClass("hidden")) {
+                listFunction.addClass("hidden");
+            }
+        });
+    });
+
+
+</script>

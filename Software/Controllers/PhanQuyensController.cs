@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Software.Data;
 using Software.Models;
@@ -90,6 +91,7 @@ namespace Software.Controllers
             string sqlQuery = "SELECT * FROM PhanQuyen WHERE MaTK = @id";
             SqlParameter parameter = new SqlParameter("@id", id);
             var phanQuyen = await _context.PhanQuyen.FromSqlRaw(sqlQuery, parameter).ToListAsync();
+            ViewData["chucNang"] = _context.ChucNang.ToList();
             ViewData["MaTK"] = id;
             ViewData["MaNV"] = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaTK == id).MaNV;
             if (phanQuyen == null || !phanQuyen.Any())
