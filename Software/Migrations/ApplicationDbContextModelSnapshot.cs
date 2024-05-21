@@ -23,554 +23,484 @@ namespace Software.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Software.Models.ChiTietHoaDon", b =>
-                {
-                    b.Property<string>("MaHD")
-                        .HasColumnType("nvarchar(450)");
+            {
+                b.Property<string>("MaHD")
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("MaMon")
-                        .HasColumnType("int");
+                b.Property<int>("MaMon")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("DonGia")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("DonGia")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("SoLuong")
-                        .HasColumnType("int");
+                b.Property<int>("SoLuong")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("TongTien")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("TongTien")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("MaHD", "MaMon");
+                b.HasKey("MaHD", "MaMon");
 
-                    b.HasIndex("MaMon");
+                b.HasIndex("MaMon");
 
-                    b.ToTable("ChiTietHoaDon");
-                });
+                b.ToTable("ChiTietHoaDon");
+            });
 
             modelBuilder.Entity("Software.Models.ChucNang", b =>
-                {
-                    b.Property<int>("MaChucNang")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaChucNang")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaChucNang"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaChucNang"));
 
-                    b.Property<string>("DuongDanChucNang")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("DuongDanChucNang")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenChucNang")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.HasKey("MaChucNang");
 
-                    b.HasKey("MaChucNang");
-
-                    b.ToTable("ChucNang");
-                });
+                b.ToTable("ChucNang");
+            });
 
             modelBuilder.Entity("Software.Models.ChucVu", b =>
-                {
-                    b.Property<int>("MaChucVu")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaChucVu")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaChucVu"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaChucVu"));
 
-                    b.Property<string>("TenChucVu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("TenChucVu")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MaChucVu");
+                b.HasKey("MaChucVu");
 
-                    b.ToTable("ChucVu");
-                });
+                b.ToTable("ChucVu");
+            });
 
             modelBuilder.Entity("Software.Models.DoanhThuDichVuGiaiTri", b =>
-                {
-                    b.Property<int>("MaDoanhThu")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaDoanhThu")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaDoanhThu"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaDoanhThu"));
 
-                    b.Property<DateTime>("Ngay")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("Ngay")
+                    .HasColumnType("datetime2");
 
-                    b.Property<decimal>("SoTienThu")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("SoTienThu")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("MaDoanhThu");
+                b.HasKey("MaDoanhThu");
 
-                    b.ToTable("DoanhThuDichVuGiaiTri");
-                });
+                b.ToTable("DoanhThuDichVuGiaiTri");
+            });
 
             modelBuilder.Entity("Software.Models.HoaDon", b =>
-                {
-                    b.Property<string>("MaHD")
-                        .HasColumnType("nvarchar(450)");
+            {
+                b.Property<string>("MaHD")
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("MaMT")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                b.Property<string>("MaMT")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("ThoiGian")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("ThoiGian")
+                    .HasColumnType("datetime2");
 
-                    b.Property<decimal>("TongTien")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("TongTien")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("MaHD");
+                b.HasKey("MaHD");
 
-                    b.HasIndex("MaMT");
+                b.HasIndex("MaMT");
 
-                    b.ToTable("HoaDon");
-                });
+                b.ToTable("HoaDon");
+            });
 
-            modelBuilder.Entity("Software.Models.KhachHang", b =>
-                {
-                    b.Property<int>("MaKH")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaKH"));
-
-                    b.Property<string>("SoDT")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenKhachHang")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MaKH");
-
-                    b.ToTable("KhachHang");
-                });
 
             modelBuilder.Entity("Software.Models.LienKetQuyen", b =>
-                {
-                    b.Property<int>("MaChucNang")
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaChucNang")
+                    .HasColumnType("int");
 
-                    b.Property<int>("MaQuyen")
-                        .HasColumnType("int");
+                b.Property<int>("MaQuyen")
+                    .HasColumnType("int");
 
-                    b.HasKey("MaChucNang", "MaQuyen");
+                b.HasKey("MaChucNang", "MaQuyen");
 
-                    b.HasIndex("MaQuyen");
+                b.HasIndex("MaQuyen");
 
-                    b.ToTable("LienKetQuyen");
-                });
+                b.ToTable("LienKetQuyen");
+            });
 
             modelBuilder.Entity("Software.Models.LoaiMon", b =>
-                {
-                    b.Property<int>("MaLoaiMon")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaLoaiMon")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaLoaiMon"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaLoaiMon"));
 
-                    b.Property<string>("TenLoaiMon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("TenLoaiMon")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MaLoaiMon");
+                b.HasKey("MaLoaiMon");
 
-                    b.ToTable("LoaiMon");
-                });
+                b.ToTable("LoaiMon");
+            });
 
             modelBuilder.Entity("Software.Models.MayTinh", b =>
-                {
-                    b.Property<string>("MaMT")
-                        .HasColumnType("nvarchar(450)");
+            {
+                b.Property<string>("MaMT")
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("TinhTrang")
-                        .HasColumnType("int");
+                b.Property<int>("TinhTrang")
+                    .HasColumnType("int");
 
-                    b.HasKey("MaMT");
+                b.HasKey("MaMT");
 
-                    b.ToTable("MayTinh");
-                });
+                b.ToTable("MayTinh");
+            });
 
             modelBuilder.Entity("Software.Models.NhanVien", b =>
+            {
+                b.Property<string>("MaNV")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("ChungMinhThu")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("DiaChi")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<bool>("GioiTinh")
+                    .HasColumnType("bit");
+
+                b.Property<int>("MaChucVu")
+                    .HasColumnType("int");
+
+                b.Property<string>("SoDienThoai")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("TenNhanVien")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("MaNV");
+
+                b.HasIndex("MaChucVu");
+
+                b.ToTable("NhanVien", t =>
                 {
-                    b.Property<string>("MaNV")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ChungMinhThu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DiaChi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("GioiTinh")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MaChucVu")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SoDienThoai")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenNhanVien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MaNV");
-
-                    b.HasIndex("MaChucVu");
-
-                    b.ToTable("NhanVien", t =>
-                        {
-                            t.HasCheckConstraint("CHECK_CMT", "LEN(ChungMinhThu) BETWEEN 9 AND 12");
-                        });
+                    t.HasCheckConstraint("CHECK_CMT", "LEN(ChungMinhThu) BETWEEN 9 AND 12");
                 });
-
-            modelBuilder.Entity("Software.Models.NhanVienChucVuDTO", b =>
-                {
-                    b.Property<string>("ChungMinhThu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DiaChi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("GioiTinh")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MaChucVu")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MaNV")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SoDienThoai")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenChucVu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenNhanVien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.ToTable("NhanVienChucVuDTO", (string)null);
-                });
+            });
 
             modelBuilder.Entity("Software.Models.PhanQuyen", b =>
-                {
-                    b.Property<int>("MaTK")
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaTK")
+                    .HasColumnType("int");
 
-                    b.Property<int>("MaQuyen")
-                        .HasColumnType("int");
+                b.Property<int>("MaQuyen")
+                    .HasColumnType("int");
 
-                    b.HasKey("MaTK", "MaQuyen");
+                b.HasKey("MaTK", "MaQuyen");
 
-                    b.HasIndex("MaQuyen");
+                b.HasIndex("MaQuyen");
 
-                    b.ToTable("PhanQuyen");
-                });
+                b.ToTable("PhanQuyen");
+            });
 
             modelBuilder.Entity("Software.Models.Quyen", b =>
-                {
-                    b.Property<int>("MaQuyen")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaQuyen")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaQuyen"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaQuyen"));
 
-                    b.Property<string>("TenQuyen")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("TenQuyen")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MaQuyen");
+                b.HasKey("MaQuyen");
 
-                    b.ToTable("Quyen");
-                });
+                b.ToTable("Quyen");
+            });
 
             modelBuilder.Entity("Software.Models.TaiKhoan", b =>
-                {
-                    b.Property<int>("MaTK")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<string>("MaTK")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("nvarchar(50)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaTK"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<string>("MaTK"));
 
-                    b.Property<int>("MaKH")
-                        .HasColumnType("int");
+                b.Property<string>("MatKhau")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("MatKhau")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<decimal>("SoDu")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("SoDu")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<string>("TenKhachHang")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("TenTK")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("SoDT")
+                    .IsRequired()
+                    .HasColumnType("varchar(10)");
 
-                    b.HasKey("MaTK");
+                b.HasKey("MaTK");
 
-                    b.HasIndex("MaKH");
-
-                    b.ToTable("TaiKhoan");
-                });
+                b.ToTable("TaiKhoan");
+            });
 
             modelBuilder.Entity("Software.Models.TaiKhoanNhanVien", b =>
-                {
-                    b.Property<int>("MaTK")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaTK")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaTK"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaTK"));
 
-                    b.Property<string>("MaKhau")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("MaKhau")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MaNV")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                b.Property<string>("MaNV")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TenTK")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("TenTK")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MaTK");
+                b.HasKey("MaTK");
 
-                    b.HasIndex("MaNV")
-                        .IsUnique();
+                b.HasIndex("MaNV")
+                    .IsUnique();
 
-                    b.ToTable("TaiKhoanNhanVien");
-                });
+                b.ToTable("TaiKhoanNhanVien");
+            });
 
             modelBuilder.Entity("Software.Models.ThamSo", b =>
-                {
-                    b.Property<string>("MaThamSo")
-                        .HasColumnType("nvarchar(450)");
+            {
+                b.Property<string>("MaThamSo")
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("DonVi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("DonVi")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("GiaTri")
-                        .HasColumnType("real");
+                b.Property<float>("GiaTri")
+                    .HasColumnType("real");
 
-                    b.Property<string>("TenThamSo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("TenThamSo")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("TinhTrang")
-                        .HasColumnType("tinyint");
+                b.Property<byte>("TinhTrang")
+                    .HasColumnType("tinyint");
 
-                    b.HasKey("MaThamSo");
+                b.HasKey("MaThamSo");
 
-                    b.ToTable("ThamSo");
-                });
+                b.ToTable("ThamSo");
+            });
 
             modelBuilder.Entity("Software.Models.ThucDon", b =>
-                {
-                    b.Property<int>("MaMon")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("MaMon")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaMon"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaMon"));
 
-                    b.Property<byte[]>("AnhMon")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                b.Property<byte[]>("AnhMon")
+                    .IsRequired()
+                    .HasColumnType("varbinary(max)");
 
-                    b.Property<decimal>("DonGia")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("DonGia")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("MaLoaiMon")
-                        .HasColumnType("int");
+                b.Property<int>("MaLoaiMon")
+                    .HasColumnType("int");
 
-                    b.Property<string>("TenMon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("TenMon")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TinhTrang")
-                        .HasColumnType("bit");
+                b.Property<bool>("TinhTrang")
+                    .HasColumnType("bit");
 
-                    b.HasKey("MaMon");
+                b.HasKey("MaMon");
 
-                    b.HasIndex("MaLoaiMon");
+                b.HasIndex("MaLoaiMon");
 
-                    b.ToTable("ThucDon");
-                });
+                b.ToTable("ThucDon");
+            });
 
             modelBuilder.Entity("Software.Models.ChiTietHoaDon", b =>
-                {
-                    b.HasOne("Software.Models.HoaDon", "HoaDon")
-                        .WithMany("ChiTietHoaDons")
-                        .HasForeignKey("MaHD")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.HoaDon", "HoaDon")
+                    .WithMany("ChiTietHoaDons")
+                    .HasForeignKey("MaHD")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("Software.Models.ThucDon", "ThucDon")
-                        .WithMany("ChiTietHoaDons")
-                        .HasForeignKey("MaMon")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("Software.Models.ThucDon", "ThucDon")
+                    .WithMany("ChiTietHoaDons")
+                    .HasForeignKey("MaMon")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("HoaDon");
+                b.Navigation("HoaDon");
 
-                    b.Navigation("ThucDon");
-                });
+                b.Navigation("ThucDon");
+            });
 
             modelBuilder.Entity("Software.Models.HoaDon", b =>
-                {
-                    b.HasOne("Software.Models.MayTinh", "MayTinh")
-                        .WithMany("HoaDons")
-                        .HasForeignKey("MaMT")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.MayTinh", "MayTinh")
+                    .WithMany("HoaDons")
+                    .HasForeignKey("MaMT")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("MayTinh");
-                });
+                b.Navigation("MayTinh");
+            });
 
             modelBuilder.Entity("Software.Models.LienKetQuyen", b =>
-                {
-                    b.HasOne("Software.Models.ChucNang", "ChucNang")
-                        .WithMany("LienKetQuyens")
-                        .HasForeignKey("MaChucNang")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.ChucNang", "ChucNang")
+                    .WithMany("LienKetQuyens")
+                    .HasForeignKey("MaChucNang")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("Software.Models.Quyen", "Quyen")
-                        .WithMany("LienKetQuyens")
-                        .HasForeignKey("MaQuyen")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("Software.Models.Quyen", "Quyen")
+                    .WithMany("LienKetQuyens")
+                    .HasForeignKey("MaQuyen")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("ChucNang");
+                b.Navigation("ChucNang");
 
-                    b.Navigation("Quyen");
-                });
+                b.Navigation("Quyen");
+            });
 
             modelBuilder.Entity("Software.Models.NhanVien", b =>
-                {
-                    b.HasOne("Software.Models.ChucVu", "ChucVu")
-                        .WithMany("NhanViens")
-                        .HasForeignKey("MaChucVu")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.ChucVu", "ChucVu")
+                    .WithMany("NhanViens")
+                    .HasForeignKey("MaChucVu")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("ChucVu");
-                });
+                b.Navigation("ChucVu");
+            });
 
             modelBuilder.Entity("Software.Models.PhanQuyen", b =>
-                {
-                    b.HasOne("Software.Models.Quyen", "Quyen")
-                        .WithMany("PhanQuyens")
-                        .HasForeignKey("MaQuyen")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.Quyen", "Quyen")
+                    .WithMany("PhanQuyens")
+                    .HasForeignKey("MaQuyen")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("Software.Models.TaiKhoanNhanVien", "TaiKhoanNhanVien")
-                        .WithMany("PhanQuyens")
-                        .HasForeignKey("MaTK")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("Software.Models.TaiKhoanNhanVien", "TaiKhoanNhanVien")
+                    .WithMany("PhanQuyens")
+                    .HasForeignKey("MaTK")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Quyen");
+                b.Navigation("Quyen");
 
-                    b.Navigation("TaiKhoanNhanVien");
-                });
+                b.Navigation("TaiKhoanNhanVien");
+            });
 
-            modelBuilder.Entity("Software.Models.TaiKhoan", b =>
-                {
-                    b.HasOne("Software.Models.KhachHang", "KhachHang")
-                        .WithMany("TaiKhoans")
-                        .HasForeignKey("MaKH")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
-                    b.Navigation("KhachHang");
-                });
 
             modelBuilder.Entity("Software.Models.TaiKhoanNhanVien", b =>
-                {
-                    b.HasOne("Software.Models.NhanVien", "NhanVien")
-                        .WithOne("TaiKhoan")
-                        .HasForeignKey("Software.Models.TaiKhoanNhanVien", "MaNV")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.NhanVien", "NhanVien")
+                    .WithOne("TaiKhoanNhanVien")
+                    .HasForeignKey("Software.Models.TaiKhoanNhanVien", "MaNV")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("NhanVien");
-                });
+                b.Navigation("NhanVien");
+            });
 
             modelBuilder.Entity("Software.Models.ThucDon", b =>
-                {
-                    b.HasOne("Software.Models.LoaiMon", "LoaiMon")
-                        .WithMany("ThucDons")
-                        .HasForeignKey("MaLoaiMon")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("Software.Models.LoaiMon", "LoaiMon")
+                    .WithMany("ThucDons")
+                    .HasForeignKey("MaLoaiMon")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("LoaiMon");
-                });
+                b.Navigation("LoaiMon");
+            });
 
             modelBuilder.Entity("Software.Models.ChucNang", b =>
-                {
-                    b.Navigation("LienKetQuyens");
-                });
+            {
+                b.Navigation("LienKetQuyens");
+            });
 
             modelBuilder.Entity("Software.Models.ChucVu", b =>
-                {
-                    b.Navigation("NhanViens");
-                });
+            {
+                b.Navigation("NhanViens");
+            });
 
             modelBuilder.Entity("Software.Models.HoaDon", b =>
-                {
-                    b.Navigation("ChiTietHoaDons");
-                });
+            {
+                b.Navigation("ChiTietHoaDons");
+            });
 
-            modelBuilder.Entity("Software.Models.KhachHang", b =>
-                {
-                    b.Navigation("TaiKhoans");
-                });
+
 
             modelBuilder.Entity("Software.Models.LoaiMon", b =>
-                {
-                    b.Navigation("ThucDons");
-                });
+            {
+                b.Navigation("ThucDons");
+            });
 
             modelBuilder.Entity("Software.Models.MayTinh", b =>
-                {
-                    b.Navigation("HoaDons");
-                });
+            {
+                b.Navigation("HoaDons");
+            });
 
             modelBuilder.Entity("Software.Models.NhanVien", b =>
-                {
-                    b.Navigation("TaiKhoan");
-                });
+            {
+                b.Navigation("TaiKhoanNhanVien")
+                    .IsRequired();
+            });
 
             modelBuilder.Entity("Software.Models.Quyen", b =>
-                {
-                    b.Navigation("LienKetQuyens");
+            {
+                b.Navigation("LienKetQuyens");
 
-                    b.Navigation("PhanQuyens");
-                });
+                b.Navigation("PhanQuyens");
+            });
 
             modelBuilder.Entity("Software.Models.TaiKhoanNhanVien", b =>
-                {
-                    b.Navigation("PhanQuyens");
-                });
+            {
+                b.Navigation("PhanQuyens");
+            });
 
             modelBuilder.Entity("Software.Models.ThucDon", b =>
-                {
-                    b.Navigation("ChiTietHoaDons");
-                });
+            {
+                b.Navigation("ChiTietHoaDons");
+            });
 #pragma warning restore 612, 618
         }
     }

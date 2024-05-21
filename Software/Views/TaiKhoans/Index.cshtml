@@ -2,52 +2,43 @@
 
 @{
     ViewData["Title"] = "Index";
+    int count = 1;
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenTK)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatKhau)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SoDu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KhachHang)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenTK)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatKhau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoDu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KhachHang.MaKH)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaTK">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaTK">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaTK">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="relative overflow-x-auto rounded-lg pt-7 flex justify-content-center">
+        <table class="text-lg text-left rtl:text-right text-Jaguar font-medium overflow-hidden rounded-lg w-[95%]">
+            <thead class="bg-Bud">
+                <tr>
+                    <th scope="col" class="px-6 py-3">STT</th>
+
+                    <th scope="col" class="px-6 py-3">Tên tài khoản</th>
+                    <th scope="col" class="px-6 py-3">Số dư</th>
+                    <th scope="col" class="px-6 py-3">Tên khách hàng</th>
+                    <th scope="col" class="px-6 py-3"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var taiKhoan in Model)
+                {
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <th scope="row" class="px-6 py-4">@count</th>
+                        <td class="px-6 py-4">@taiKhoan.TenTK</td>
+                        <td class="px-6 py-4">@taiKhoan.SoDu</td>
+                        <td class="px-6 py-4">@taiKhoan.TenKhachHang</td>
+                        <td class="px-6 py-4"><a asp-action="Edit" asp-route-id="@taiKhoan.MaTK">Xem</a></td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -17,7 +17,6 @@ namespace Software.Migrations
                 {
                     MaChucNang = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TenChucNang = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DuongDanChucNang = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -52,19 +51,6 @@ namespace Software.Migrations
                     table.PrimaryKey("PK_DoanhThuDichVuGiaiTri", x => x.MaDoanhThu);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "KhachHang",
-                columns: table => new
-                {
-                    MaKH = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TenKhachHang = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SoDT = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_KhachHang", x => x.MaKH);
-                });
 
             migrationBuilder.CreateTable(
                 name: "LoaiMon",
@@ -89,23 +75,6 @@ namespace Software.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MayTinh", x => x.MaMT);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "NhanVienChucVuDTO",
-                columns: table => new
-                {
-                    MaNV = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TenNhanVien = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ChungMinhThu = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SoDienThoai = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GioiTinh = table.Column<bool>(type: "bit", nullable: false),
-                    DiaChi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaChucVu = table.Column<int>(type: "int", nullable: false),
-                    TenChucVu = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
                 });
 
             migrationBuilder.CreateTable(
@@ -164,23 +133,14 @@ namespace Software.Migrations
                 name: "TaiKhoan",
                 columns: table => new
                 {
-                    MaTK = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TenTK = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MatKhau = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaTK = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    TenTK = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    MatKhau = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     SoDu = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    MaKH = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TaiKhoan", x => x.MaTK);
-                    table.ForeignKey(
-                        name: "FK_TaiKhoan_KhachHang_MaKH",
-                        column: x => x.MaKH,
-                        principalTable: "KhachHang",
-                        principalColumn: "MaKH",
-                        onDelete: ReferentialAction.Cascade);
-                });
+                    TenKhachHang = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    SoDT = table.Column<string>(type: "varchar(10)", nullable: false),
+                }
+                );
 
             migrationBuilder.CreateTable(
                 name: "ThucDon",
@@ -376,9 +336,6 @@ namespace Software.Migrations
                 name: "LienKetQuyen");
 
             migrationBuilder.DropTable(
-                name: "NhanVienChucVuDTO");
-
-            migrationBuilder.DropTable(
                 name: "PhanQuyen");
 
             migrationBuilder.DropTable(
@@ -402,8 +359,7 @@ namespace Software.Migrations
             migrationBuilder.DropTable(
                 name: "TaiKhoanNhanVien");
 
-            migrationBuilder.DropTable(
-                name: "KhachHang");
+
 
             migrationBuilder.DropTable(
                 name: "MayTinh");

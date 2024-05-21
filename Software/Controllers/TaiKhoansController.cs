@@ -19,15 +19,15 @@ namespace Software.Controllers
             _context = context;
         }
 
-        // GET: TaiKhoans
+        // GET: TaiKhoans1
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.TaiKhoan.Include(t => t.KhachHang);
+            var applicationDbContext = _context.TaiKhoan;
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: TaiKhoans/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: TaiKhoans1/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.TaiKhoan == null)
             {
@@ -35,7 +35,6 @@ namespace Software.Controllers
             }
 
             var taiKhoan = await _context.TaiKhoan
-                .Include(t => t.KhachHang)
                 .FirstOrDefaultAsync(m => m.MaTK == id);
             if (taiKhoan == null)
             {
@@ -45,31 +44,40 @@ namespace Software.Controllers
             return View(taiKhoan);
         }
 
-        // GET: TaiKhoans/Create
+        // GET: TaiKhoans1/Create
         public IActionResult Create()
         {
-            ViewData["MaKH"] = new SelectList(_context.KhachHang, "MaKH", "MaKH");
             return View();
         }
 
-        // POST: TaiKhoans/Create
+        // POST: TaiKhoans1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaTK,TenTK,MatKhau,SoDu,MaKH")] TaiKhoan taiKhoan)
+        public async Task<IActionResult> Create([Bind("TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
+
         {
+            var lastMaTKLonNhat = _context.TaiKhoan.OrderByDescending(t => t.MaTK).Select(t => t.MaTK).FirstOrDefault();
+            int getID = int.Parse(lastMaTKLonNhat.Substring(2)) + 1;
+            taiKhoan.MaTK = "KH0" + getID;
+
             if (ModelState.IsValid)
             {
+                var existingAccount = await _context.TaiKhoan.FirstOrDefaultAsync(a => a.TenTK == taiKhoan.TenTK);
+                if (existingAccount != null)
+                {
+                    ModelState.AddModelError("TenTK", "The account name already exists. Please enter a different account name.");
+                    return View(taiKhoan);
+                }
                 _context.Add(taiKhoan);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKH"] = new SelectList(_context.KhachHang, "MaKH", "MaKH", taiKhoan.MaKH);
             return View(taiKhoan);
         }
 
-        // GET: TaiKhoans/Edit/5
+        // GET: TaiKhoans1/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.TaiKhoan == null)
@@ -82,16 +90,15 @@ namespace Software.Controllers
             {
                 return NotFound();
             }
-            ViewData["MaKH"] = new SelectList(_context.KhachHang, "MaKH", "MaKH", taiKhoan.MaKH);
             return View(taiKhoan);
         }
 
-        // POST: TaiKhoans/Edit/5
+        // POST: TaiKhoans1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaTK,TenTK,MatKhau,SoDu,MaKH")] TaiKhoan taiKhoan)
+        public async Task<IActionResult> Edit(string id, [Bind("MaTK,TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
         {
             if (id != taiKhoan.MaTK)
             {
@@ -118,12 +125,11 @@ namespace Software.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKH"] = new SelectList(_context.KhachHang, "MaKH", "MaKH", taiKhoan.MaKH);
             return View(taiKhoan);
         }
 
-        // GET: TaiKhoans/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: TaiKhoans1/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.TaiKhoan == null)
             {
@@ -131,7 +137,6 @@ namespace Software.Controllers
             }
 
             var taiKhoan = await _context.TaiKhoan
-                .Include(t => t.KhachHang)
                 .FirstOrDefaultAsync(m => m.MaTK == id);
             if (taiKhoan == null)
             {
@@ -141,7 +146,7 @@ namespace Software.Controllers
             return View(taiKhoan);
         }
 
-        // POST: TaiKhoans/Delete/5
+        // POST: TaiKhoans1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -155,14 +160,14 @@ namespace Software.Controllers
             {
                 _context.TaiKhoan.Remove(taiKhoan);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TaiKhoanExists(int id)
+        private bool TaiKhoanExists(string id)
         {
-          return (_context.TaiKhoan?.Any(e => e.MaTK == id)).GetValueOrDefault();
+            return (_context.TaiKhoan?.Any(e => e.MaTK == id)).GetValueOrDefault();
         }
     }
 }
