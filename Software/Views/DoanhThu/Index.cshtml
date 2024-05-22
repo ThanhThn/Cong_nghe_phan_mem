@@ -131,7 +131,7 @@
 
             // Add title
             doc.setFontSize(18);
-            doc.text('BÁO CÁO TỔNG DOANH THU', 20, 20);
+            doc.text('BAO CAO TONG DOANH THU', 20, 20);
 
             // Format start and end dates
             const startDate = new Date(document.getElementById('start-date').value);
@@ -141,13 +141,13 @@
 
             // Add date range text
             doc.setFontSize(12);
-            doc.text(`Từ ngày: ${startDateString} - Đến ngày: ${endDateString}`, 20, 30);
+            doc.text(`Tu ngay: ${startDateString} - Den ngay: ${endDateString}`, 20, 30);
 
             // Add table header
             doc.setFontSize(12);
             doc.setFont('times', 'bold');
             doc.text('STT', 20, 40);
-            doc.text('Thời gian', 40, 40);
+            doc.text('Thoi gian', 40, 40);
             doc.text('Doanh thu', 100, 40);
 
             // Add table rows
@@ -169,7 +169,7 @@
 
             // Add total revenue
             const totalRevenue = document.getElementById('total-revenue').value;
-            doc.text('Tổng doanh thu:', 20, yPosition + 10);
+            doc.text('Tong doanh thu:', 20, yPosition + 10);
             doc.text(totalRevenue, 100, yPosition + 10);
 
             // Save the PDF

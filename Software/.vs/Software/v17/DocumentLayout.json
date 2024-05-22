@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|c:\\lap trinh dai hoc\\congnghephanmem\\cong_nghe_phan_mem\\software\\views\\doanhthudichvugiaitris\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\doanhthudichvugiaitris\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|c:\\lap trinh dai hoc\\congnghephanmem\\cong_nghe_phan_mem\\software\\views\\doanhthu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\doanhthu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|c:\\lap trinh dai hoc\\congnghephanmem\\cong_nghe_phan_mem\\software\\views\\doanhthudichvugiaitris\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\doanhthudichvugiaitris\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|c:\\lap trinh dai hoc\\congnghephanmem\\cong_nghe_phan_mem\\software\\controllers\\doanhthu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
@@ -102,8 +102,7 @@
               "RelativeToolTip": "Controllers\\DoanhThuDichVuGiaiTrisController.cs",
               "ViewState": "AQIAACwAAAAAAAAAAAAqwD8AAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T02:40:21.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:40:21.954Z"
             },
             {
               "$type": "Document",
@@ -115,8 +114,7 @@
               "RelativeToolTip": "Models\\DoanhThuDichVuGiaiTri.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T02:52:47.27Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:52:47.27Z"
             },
             {
               "$type": "Document",
@@ -128,8 +126,7 @@
               "RelativeToolTip": "Views\\DoanhThuDichVuGiaiTris\\Delete.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:52:17.278Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:52:17.278Z"
             },
             {
               "$type": "Document",
@@ -141,8 +138,7 @@
               "RelativeToolTip": "Views\\DoanhThuDichVuGiaiTris\\Details.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:48:17.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:48:17.072Z"
             },
             {
               "$type": "Document",
@@ -154,18 +150,17 @@
               "RelativeToolTip": "Views\\DoanhThuDichVuGiaiTris\\Edit.cshtml",
               "ViewState": "AQIAAAMAAAAAAAAAAAAcwAwAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:45:41.216Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:45:41.216Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\Views\\DoanhThuDichVuGiaiTris\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\DoanhThuDichVuGiaiTris\\Create.cshtml",
               "ToolTip": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\Views\\DoanhThuDichVuGiaiTris\\Create.cshtml",
               "RelativeToolTip": "Views\\DoanhThuDichVuGiaiTris\\Create.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA9AAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-22T02:42:21.567Z",
               "EditorCaption": ""
@@ -180,18 +175,17 @@
               "RelativeToolTip": "Controllers\\DoanhThu.cs",
               "ViewState": "AQIAAD0AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T01:50:34.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T01:50:34.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\Views\\DoanhThu\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\DoanhThu\\Index.cshtml",
               "ToolTip": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\Views\\DoanhThu\\Index.cshtml",
               "RelativeToolTip": "Views\\DoanhThu\\Index.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACoAAAAAAAAA",
+              "ViewState": "AQIAAJYAAAAAAAAAAAAAAKsAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-22T01:55:41.857Z",
               "EditorCaption": ""
@@ -206,8 +200,7 @@
               "RelativeToolTip": "Views\\DoanhThuDichVuGiaiTris\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:29:35.698Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:29:35.698Z"
             },
             {
               "$type": "Document",
@@ -219,8 +212,7 @@
               "RelativeToolTip": "Models\\MayTinh.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T02:31:07.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:31:07.033Z"
             },
             {
               "$type": "Document",
@@ -232,8 +224,7 @@
               "RelativeToolTip": "Views\\MayTinhs\\Details.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:10:34.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:10:34.566Z"
             },
             {
               "$type": "Document",
@@ -245,21 +236,19 @@
               "RelativeToolTip": "Views\\MayTinhs\\Edit.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:10:36.109Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:10:36.109Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "Software",
+              "Title": "Software.csproj",
               "DocumentMoniker": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\Software.csproj",
               "RelativeDocumentMoniker": "Software.csproj",
               "ToolTip": "C:\\Lap trinh Dai Hoc\\CongNghePhanMem\\Cong_nghe_phan_mem\\Software\\Software.csproj",
               "RelativeToolTip": "Software.csproj",
               "ViewState": "AQIAAAsAAAAAAAAAAAAswB8AAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-22T02:13:20.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:13:20.82Z"
             },
             {
               "$type": "Document",
@@ -271,8 +260,7 @@
               "RelativeToolTip": "Views\\NhanViens\\Edit.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:10:50.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:10:50.368Z"
             },
             {
               "$type": "Document",
@@ -284,8 +272,7 @@
               "RelativeToolTip": "Views\\MayTinhs\\Create.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:09:41.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:09:41.222Z"
             },
             {
               "$type": "Document",
@@ -297,8 +284,7 @@
               "RelativeToolTip": "Views\\NhanViens\\Delete.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:10:44.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:10:44.887Z"
             },
             {
               "$type": "Document",
@@ -310,8 +296,7 @@
               "RelativeToolTip": "Views\\NhanViens\\Create.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:10:42.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:10:42.43Z"
             },
             {
               "$type": "Document",
@@ -323,8 +308,7 @@
               "RelativeToolTip": "Views\\MayTinhs\\Delete.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:10:33.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:10:33.83Z"
             },
             {
               "$type": "Document",
@@ -336,8 +320,7 @@
               "RelativeToolTip": "Views\\DoanhThu\\Indexgg.cshtml",
               "ViewState": "AQIAAJEAAAAAAAAAAAAcwL4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-22T02:08:28.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T02:08:28.11Z"
             },
             {
               "$type": "Document",
@@ -349,8 +332,7 @@
               "RelativeToolTip": "Models\\HoaDon.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T01:52:39.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T01:52:39.154Z"
             }
           ]
         }
