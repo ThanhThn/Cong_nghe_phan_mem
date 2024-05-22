@@ -1,4 +1,44 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var username = HttpContextAccessor?.HttpContext?.Session.GetString("Username");
+    var danhSachDuongDan = HttpContextAccessor?.HttpContext?.Session.GetObject<List<string>>("DanhSachDuongDan");
+    var danhSachDuongDanJson = JsonConvert.SerializeObject(danhSachDuongDan);
+}
+
+@if (string.IsNullOrEmpty(username))
+{
+    <script>
+        window.location.href = "/Login/Index";
+    </script>
+}
+
+@if (!string.IsNullOrEmpty(username))
+{
+    <script>
+        let accept = false;
+        let url = window.location.href;
+        let baseUrl = window.location.origin + "/";
+        if(url != baseUrl){
+            let listLink = @Html.Raw(danhSachDuongDanJson);
+            for (let i = 0; i < listLink.length; i++) {
+                let regEx = new RegExp(listLink[i]);
+                if (regEx.test(url)) {
+                    accept = true;
+                    break;
+                }
+            }
+            if(!accept){
+                window.location.href = baseUrl
+            }
+        }
+    </script>
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />

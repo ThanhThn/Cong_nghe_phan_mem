@@ -17,6 +17,14 @@ builder.Services.AddControllersWithViews()
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 string connStr = builder.Configuration.GetConnectionString("DefaultConnect");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connStr));
 var app = builder.Build();
@@ -29,12 +37,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
