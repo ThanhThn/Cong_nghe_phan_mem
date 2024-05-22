@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Software.Data;
 using Software.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Software.Controllers
 {
@@ -71,6 +74,54 @@ namespace Software.Controllers
             ViewData["MaQuyen"] = new SelectList(_context.Quyen, "MaQuyen", "MaQuyen", lienKetQuyen.MaQuyen);
             return View(lienKetQuyen);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> CreateJson(int[] listFunction, string nameFunction)
+        {
+            try
+            {
+                var arrayData = listFunction;
+                var stringData = nameFunction;
+                if (string.IsNullOrEmpty(stringData) || arrayData == null || arrayData.Length == 0)
+                {
+                    return Json(new { success = false, message = "Dữ liệu không hợp lệ." });
+                }
+
+                Quyen quyen = new Quyen();
+                quyen.TenQuyen = stringData;
+                _context.Add(quyen);
+                await _context.SaveChangesAsync();
+
+                int maQuyen = quyen.MaQuyen;
+
+                foreach (int i in arrayData)
+                {
+                    ChucNang chucNang = _context.ChucNang.FirstOrDefault(k => k.MaChucNang == i);
+                    if (chucNang != null)
+                    {
+                        LienKetQuyen lienKetQuyen = new LienKetQuyen();
+                        lienKetQuyen.MaQuyen = maQuyen;
+                        lienKetQuyen.MaChucNang = i;
+                        lienKetQuyen.Quyen = quyen;
+                        lienKetQuyen.ChucNang = chucNang;
+                        _context.Add(lienKetQuyen);
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = "Chức năng không tồn tại." });
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true, message = new { maQuyen = maQuyen, tenQuyen = nameFunction } });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
+            }
+        }
+
 
         // GET: LienKetQuyens/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -14,6 +14,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
    <ItemGroup>
 		<UpToDateCheckBuilt Include="wwwroot/css/input.css" Set="Css" />
@@ -21,7 +22,7 @@
 	</ItemGroup>
 
 	<Target Name="Tailwind" BeforeTargets="Build">
-		<Exec Command="npm run style"/>
+		<Exec Command="npm run style" />
 	</Target>
 
 </Project>

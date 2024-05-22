@@ -6,8 +6,9 @@
     "\\Models",
     "\\Views",
     "\\Views\\NhanViens",
-    "\\Views\\PhanQuyens"
+    "\\Views\\PhanQuyens",
+    "\\Views\\Shared"
   ],
-  "SelectedNode": "\\Software.sln",
+  "SelectedNode": "\\Views\\PhanQuyens\\Edit.cshtml",
   "PreviewInSolutionExplorer": false
 }

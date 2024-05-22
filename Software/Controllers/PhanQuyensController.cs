@@ -92,14 +92,37 @@ namespace Software.Controllers
             SqlParameter parameter = new SqlParameter("@id", id);
             var phanQuyen = await _context.PhanQuyen.FromSqlRaw(sqlQuery, parameter).ToListAsync();
             ViewData["chucNang"] = _context.ChucNang.ToList();
+            ViewData["quyen"] = _context.Quyen.ToList();
             ViewData["MaTK"] = id;
             ViewData["MaNV"] = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaTK == id).MaNV;
-            if (phanQuyen == null || !phanQuyen.Any())
-            {
-                return View();
-            }
-
             return View(phanQuyen);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> EditJson (int[] listPremission, int maTaiKhoan)
+        {
+            TaiKhoanNhanVien taiKhoan = _context.TaiKhoanNhanVien.FirstOrDefault(k => k.MaTK == maTaiKhoan);
+            foreach (int i in listPremission)
+                {
+                    Quyen quyen = _context.Quyen.FirstOrDefault(k => k.MaQuyen == i);
+                    if (quyen != null)
+                    {
+                        PhanQuyen ph = new PhanQuyen();
+                        ph.MaQuyen = i;
+                        ph.MaTK = maTaiKhoan;
+                        ph.Quyen = quyen;
+                        ph.TaiKhoanNhanVien = taiKhoan;
+                        _context.Add(ph);
+                        taiKhoan.PhanQuyens.Add(ph);
+                        quyen.PhanQuyens.Add(ph);
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = "Quyền không tồn tại." });
+                    }
+                }
+            await _context.SaveChangesAsync();
+            return Json(new { success = true });
         }
 
         // POST: PhanQuyens/Edit/5
