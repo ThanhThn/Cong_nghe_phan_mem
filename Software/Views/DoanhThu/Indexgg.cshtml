@@ -48,7 +48,7 @@
                             <i class='bx bx-chevron-left'></i>
                         </a>
                     </li>
-                    <div class="pagination" style="display: flex; margin: 0 10px; background-color: black; padding: 4px; border-radius: 20px;">
+                    <div class="pagnation" style="display: flex; margin: 0 10px; background-color: black; padding: 4px; border-radius: 20px;">
                     <li class="page-item"><a style="border: 0; background-color: #D8F275; color: black; border-radius: 50%;" class="page-link" href="#">1</a></li>
                     <li class="page-item"><a style="border: 0; background-color: black; color: white; font-weight: 100; border-radius: 50%; margin: 0 10px;" class="page-link" href="#">2</a></li>
                     <li class="page-item"><a style="border: 0; background-color: black; color: white; font-weight: 100; border-radius: 50%;" class="page-link" href="#">3</a></li>
@@ -115,7 +115,7 @@
             let totalRevenue = 0;
             data.forEach((item, index) => {
                 const dateTime = new Date(item.thoiGian);
-                const formattedDate = dateTime.toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
+                const formattedDate = dateTime.toLocaleString('en-US'); // If you want to keep the format "M/D/YYYY, H:MM:SS AM/PM"
                 const row = document.createElement('tr');
                 row.innerHTML = `<th scope="row">${index + 1}</th><td>${formattedDate}</td><td>${item.doanhThu.toLocaleString('vi-VN')} VND</td>`;
                 tableBody.appendChild(row);
@@ -145,7 +145,7 @@
 
             // Add table header
             doc.setFontSize(12);
-            doc.setFont('times', 'bold');
+            doc.setFont('timenewroman', 'bold');
             doc.text('STT', 20, 40);
             doc.text('Thoi gian', 40, 40);
             doc.text('Doanh thu', 100, 40);
@@ -153,7 +153,7 @@
             // Add table rows
             const tableBody = document.getElementById('revenue-table-body');
             let yPosition = 50;
-            doc.setFont('times', 'normal');
+            doc.setFont('timenewroman', 'normal');
             for (let i = 0; i < tableBody.rows.length; i++) {
                 const row = tableBody.rows[i];
                 const stt = row.cells[0].innerText;
@@ -175,6 +175,8 @@
             // Save the PDF
             doc.save('BaoCaoTongDoanhThu.pdf');
         }
+
+
 
         // Example function to populate table on page load
         function populateTable() {

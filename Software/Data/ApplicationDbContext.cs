@@ -15,24 +15,19 @@ namespace Software.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<KhachHang>().HasKey(k => k.MaKH);
 
             modelBuilder.Entity<TaiKhoan>()
                 .HasKey(t => t.MaTK);
-            modelBuilder.Entity<TaiKhoan>()
-                .HasOne(t => t.KhachHang)
-                .WithMany(k => k.TaiKhoans)
-                .HasForeignKey(t => t.MaKH);
+           
 
             modelBuilder.Entity<ChucVu>().HasKey(c => c.MaChucVu);
-            modelBuilder.Entity<ChucVu>().HasMany(c => c.NhanViens).WithOne(t => t.ChucVu).HasForeignKey(t => t.MaChucVu);
 
             modelBuilder.Entity<NhanVien>()
                 .HasKey(n => n.MaNV);
             modelBuilder.Entity<NhanVien>()
-                .HasOne(t => t.TaiKhoan)
-                .WithOne(t => t.NhanVien)
-                .HasForeignKey<TaiKhoanNhanVien>(t => t.MaNV);
+                .HasOne(n => n.ChucVu)
+                .WithMany(c => c.NhanViens)
+                .HasForeignKey(n => n.MaChucVu);
             modelBuilder.Entity<NhanVien>()
                 .HasCheckConstraint("CHECK_CMT", "LEN(ChungMinhThu) BETWEEN 9 AND 12");
 
@@ -105,7 +100,6 @@ namespace Software.Data
             modelBuilder.Entity<NhanVienChucVuDTO>().HasNoKey().ToTable(nameof(NhanVienChucVuDTO));
     }
 
-        public DbSet<KhachHang> KhachHang { get; set; }
         public DbSet<TaiKhoan> TaiKhoan { get; set; }
         public DbSet<ChucVu> ChucVu { get; set; }
         public DbSet<NhanVien> NhanVien { get; set; }

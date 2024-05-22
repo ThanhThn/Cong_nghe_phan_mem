@@ -1,14 +1,19 @@
-﻿namespace Software.Models
+﻿using Microsoft.EntityFrameworkCore;
+using Software.Data;
+
+namespace Software.Models
 {
     public class TaiKhoan
     {
-        public int MaTK { get; set; }
+
+        public string MaTK { get; set; }
         public string TenTK { get; set; }
         public string MatKhau { get; set; }
         public decimal SoDu { get; set; }
-        public int MaKH { get; set; }
+        public string TenKhachHang { get; set; }
+        public string SoDT { get; set; }
 
-        public KhachHang KhachHang { get; set; }
+
+
     }
-
 }
