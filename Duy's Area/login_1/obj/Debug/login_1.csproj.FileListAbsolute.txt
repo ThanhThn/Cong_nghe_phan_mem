@@ -1,0 +1,11 @@
+D:\OOP\login_1\bin\Debug\login_1.exe.config
+D:\OOP\login_1\bin\Debug\login_1.exe
+D:\OOP\login_1\bin\Debug\login_1.pdb
+D:\OOP\login_1\obj\Debug\login_1.csproj.AssemblyReference.cache
+D:\OOP\login_1\obj\Debug\login_1.Form1.resources
+D:\OOP\login_1\obj\Debug\login_1.Properties.Resources.resources
+D:\OOP\login_1\obj\Debug\login_1.csproj.GenerateResource.cache
+D:\OOP\login_1\obj\Debug\login_1.csproj.CoreCompileInputs.cache
+D:\OOP\login_1\obj\Debug\login_1.exe
+D:\OOP\login_1\obj\Debug\login_1.pdb
+D:\OOP\login_1\obj\Debug\login_1.infoTextBoxes5.resources
