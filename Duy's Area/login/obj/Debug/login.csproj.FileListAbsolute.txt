@@ -1,0 +1,5 @@
+D:\OOP\login\obj\Debug\login.csproj.AssemblyReference.cache
+D:\OOP\login\obj\Debug\login.Form1.resources
+D:\OOP\login\obj\Debug\login.Properties.Resources.resources
+D:\OOP\login\obj\Debug\login.csproj.GenerateResource.cache
+D:\OOP\login\obj\Debug\login.csproj.CoreCompileInputs.cache
