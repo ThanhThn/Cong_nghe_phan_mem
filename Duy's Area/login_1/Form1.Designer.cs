@@ -263,7 +263,6 @@ namespace login_1
             this.signInTxt.Text = "Sign In";
             this.signInTxt.UseVisualStyleBackColor = false;
             this.signInTxt.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -284,6 +283,7 @@ namespace login_1
             this.Controls.Add(this.userNameTxt);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.readyLabel);
+
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -311,6 +311,7 @@ namespace login_1
         private RoundedTextBox nameAccount;
         private RoundedTextBox password;
         private System.Windows.Forms.Button button1;
+
         private System.Windows.Forms.Label readyLabel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.TextBox userNameTxt;
