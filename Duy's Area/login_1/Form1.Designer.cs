@@ -32,10 +32,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.userNameTxt = new System.Windows.Forms.TextBox();
+            this.passwordTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.signInTxt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,19 +71,19 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "User Name";
             // 
-            // textBox1
+            // userNameTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(484, 154);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 22);
-            this.textBox1.TabIndex = 3;
+            this.userNameTxt.Location = new System.Drawing.Point(484, 154);
+            this.userNameTxt.Name = "userNameTxt";
+            this.userNameTxt.Size = new System.Drawing.Size(181, 22);
+            this.userNameTxt.TabIndex = 3;
             // 
-            // textBox2
+            // passwordTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(484, 228);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 22);
-            this.textBox2.TabIndex = 5;
+            this.passwordTxt.Location = new System.Drawing.Point(484, 228);
+            this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.Size = new System.Drawing.Size(181, 22);
+            this.passwordTxt.TabIndex = 5;
             // 
             // label3
             // 
@@ -95,18 +95,18 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Password";
             // 
-            // button1
+            // signInTxt
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(477, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(244, 35);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Sign In";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.signInTxt.BackColor = System.Drawing.Color.Black;
+            this.signInTxt.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signInTxt.ForeColor = System.Drawing.Color.White;
+            this.signInTxt.Location = new System.Drawing.Point(477, 313);
+            this.signInTxt.Name = "signInTxt";
+            this.signInTxt.Size = new System.Drawing.Size(244, 35);
+            this.signInTxt.TabIndex = 6;
+            this.signInTxt.Text = "Sign In";
+            this.signInTxt.UseVisualStyleBackColor = false;
+            this.signInTxt.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -114,10 +114,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 494);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.signInTxt);
+            this.Controls.Add(this.passwordTxt);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.userNameTxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -136,10 +136,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox userNameTxt;
+        private System.Windows.Forms.TextBox passwordTxt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button signInTxt;
     }
 }
 
