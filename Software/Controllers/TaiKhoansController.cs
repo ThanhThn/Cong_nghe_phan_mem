@@ -43,6 +43,20 @@ namespace Software.Controllers
 
             return View(taiKhoan);
         }
+        [HttpGet]
+        public IActionResult CheckUsernameAvailability(string username)
+        {
+            var taikhoan = _context.TaiKhoan.FirstOrDefault(t => t.TenTK == username);
+            if (taikhoan == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
+        [HttpGet]
 
         // GET: TaiKhoans1/Create
         public IActionResult Create()
@@ -55,24 +69,18 @@ namespace Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
-
+        public async Task<IActionResult> Create([Bind("MaTK,TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
         {
-            var lastMaTKLonNhat = _context.TaiKhoan.OrderByDescending(t => t.MaTK).Select(t => t.MaTK).FirstOrDefault();
-            int getID = int.Parse(lastMaTKLonNhat.Substring(2)) + 1;
-            taiKhoan.MaTK = "KH0" + getID;
-
+            ModelState.Remove("MaTK");
             if (ModelState.IsValid)
             {
-                var existingAccount = await _context.TaiKhoan.FirstOrDefaultAsync(a => a.TenTK == taiKhoan.TenTK);
-                if (existingAccount != null)
-                {
-                    ModelState.AddModelError("TenTK", "The account name already exists. Please enter a different account name.");
-                    return View(taiKhoan);
-                }
+                var lastMaTKLonNhat = _context.TaiKhoan.OrderByDescending(t => t.MaTK).Select(t => t.MaTK).FirstOrDefault();
+                int getID = int.Parse(lastMaTKLonNhat.Substring(2)) + 1;
+                taiKhoan.MaTK = "KH0" + getID;
                 _context.Add(taiKhoan);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // RedirectToAction(nameof(Index));
+                return View(taiKhoan);
             }
             return View(taiKhoan);
         }
