@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -38,12 +39,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
 =======
+=======
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
             this.readyLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.userNameTxt = new System.Windows.Forms.TextBox();
             this.passwordTxt = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.signInTxt = new System.Windows.Forms.Button();
+<<<<<<< HEAD
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
+=======
 >>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +64,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+<<<<<<< HEAD
 <<<<<<< HEAD
             // label1
             // 
@@ -118,6 +125,8 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
 =======
+=======
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
             // readyLabel
             // 
             this.readyLabel.AutoSize = true;
@@ -176,6 +185,9 @@
             this.signInTxt.Text = "Sign In";
             this.signInTxt.UseVisualStyleBackColor = false;
             this.signInTxt.Click += new System.EventHandler(this.button1_Click);
+<<<<<<< HEAD
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
+=======
 >>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
             // 
             // Form1
@@ -185,6 +197,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 494);
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
@@ -192,12 +205,17 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
 =======
+=======
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
             this.Controls.Add(this.signInTxt);
             this.Controls.Add(this.passwordTxt);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameTxt);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.readyLabel);
+<<<<<<< HEAD
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
+=======
 >>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -214,6 +232,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
 <<<<<<< HEAD
+<<<<<<< HEAD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
@@ -221,12 +240,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
 =======
+=======
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
         private System.Windows.Forms.Label readyLabel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.TextBox userNameTxt;
         private System.Windows.Forms.TextBox passwordTxt;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Button signInTxt;
+<<<<<<< HEAD
+>>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
+=======
 >>>>>>> 67d2de037da2302e44120dfb013b048163d3ef6d
     }
 }
