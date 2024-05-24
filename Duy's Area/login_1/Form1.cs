@@ -17,14 +17,14 @@ namespace login_1
             InitializeComponent();
             this.BackgroundImage = Properties.Resources.background;
             this.WindowState = FormWindowState.Maximized;
-            this.panel1.Location = new Point(
-                (this.ClientSize.Width - this.panel1.Width) / 2,
-                (this.ClientSize.Height - this.panel1.Height) / 2);
+            this.panelContainer.Location = new Point(
+                (this.ClientSize.Width - this.panelContainer.Width) / 2,
+                (this.ClientSize.Height - this.panelContainer.Height) / 2);
             this.Resize += (s, e) =>
             {
-                this.panel1.Location = new Point(
-                    (this.ClientSize.Width - this.panel1.Width) / 2,
-                    (this.ClientSize.Height - this.panel1.Height) / 2
+                this.panelContainer.Location = new Point(
+                    (this.ClientSize.Width - this.panelContainer.Width) / 2,
+                    (this.ClientSize.Height - this.panelContainer.Height) / 2
                 );
                 this.panel2.Size = this.ClientSize;
             };
