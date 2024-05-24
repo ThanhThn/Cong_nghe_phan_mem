@@ -27,6 +27,7 @@ namespace Software.Controllers
         // GET: NhanViens
         public async Task<IActionResult> Index()
         {
+            var phiDichVu = _context.ThamSo.ToList();
             var applicationDbContext = _context.NhanVien.Include(n => n.ChucVu);
             List<ChucVu> listChucVu = _context.ChucVu.ToList();
             ViewData["ChucVu"] = listChucVu;

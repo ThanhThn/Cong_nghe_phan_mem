@@ -6,7 +6,7 @@
         public string TenThamSo { get; set; }
         public string DonVi { get; set; }
         public float GiaTri { get; set; }
-        public byte TinhTrang { get; set; }
+        public bool TinhTrang { get; set; }
     }
 
 }

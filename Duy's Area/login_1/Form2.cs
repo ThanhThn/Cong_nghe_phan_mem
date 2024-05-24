@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace login_1
 {
-    public partial class infoTextBoxes5 : Form
+    public partial class infoBox : Form
     {
-    
+        float dpiX;
         private Label[] infoLabels;
         private TextBox[] infoTextBoxes;
         private Button btnMessages;
@@ -22,15 +22,70 @@ namespace login_1
         private decimal soDuHienTai = 1000; // Giả sử số dư ban đầu là 1000
         private decimal soTienMotGio = 100; // Giả sử số tiền trong một giờ là 100
 
-        public infoTextBoxes5()
+        public infoBox(string nameAccount)
         {
-            InitializeComponent1();
+            InitializeDPI();
+            InitializeComponent();
+            this.lblUserName.Text = TrimTextToFit(nameAccount, this.lblUserName, 80);
+            this.Size = new Size(411, 497);
+            this.containerTime.Width = 353;
+            this.containerTime.Height = 208;
+            this.containerButton.Width = 353;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.BackColor = ColorTranslator.FromHtml("#F7F7F5");
+            float fontSize30 = PixelsToPoints(26);
+            float fontSize16 = PixelsToPoints(14);
+            this.lblUserName.Font = new Font("Inter ExtraBold", fontSize30, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumTime.Font = new Font("Inter SemiBold", fontSize16, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsedTime.Font = new System.Drawing.Font("Inter SemiBold", fontSize16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsedCost.Font = new System.Drawing.Font("Inter SemiBold", fontSize16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServiceCost.Font = new System.Drawing.Font("Inter SemiBold", fontSize16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemainTime.Font = new System.Drawing.Font("Inter SemiBold", fontSize16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            SetStatusButtonPosition();
+
+        }
+        private void SetStatusButtonPosition()
+        {
+            this.status.Location = new Point(this.lblUserName.Right + 11, this.status.Top);
         }
 
-        private void lblUserName_Click(object sender, EventArgs e)
-        {
 
+        private void InitializeDPI()
+        {
+            using (Graphics graphics = this.CreateGraphics())
+            {
+                dpiX = graphics.DpiX;
+            }
         }
+        private string TrimTextToFit(string text, Label label, int maxWidth)
+        {
+            string trimmedText = text;
+            using (Graphics g = label.CreateGraphics())
+            {
+                SizeF size = g.MeasureString(trimmedText, label.Font);
+                while (size.Width > maxWidth)
+                {
+                    if (trimmedText.Length > 0)
+                    {
+                        trimmedText = trimmedText.Substring(0, trimmedText.Length - 1);
+                        size = g.MeasureString(trimmedText + "...", label.Font);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return trimmedText + (trimmedText.Length < text.Length ? "..." : "");
+        }
+        public float PixelsToPoints(int pixels)
+        {
+            return pixels * 72 / dpiX;
+        }
+
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Logout button clicked");
@@ -56,121 +111,21 @@ namespace login_1
         {
             MessageBox.Show("Lock Machine button clicked");
         }
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form());
-        }
-        private void InitializeComponent1()
-        {
-            this.lblUserName = new Label();
-            this.lblStatus = new Label();
-            this.btnLogout = new Button();
-
-            // Set properties and add controls
-            // User Label
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new Point(20, 20);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new Size(100, 29);
-            this.lblUserName.Text = "HIEU123";
-            this.Controls.Add(this.lblUserName);
-            // Status Indicator
-            lblStatus = new Label
-            {
-                Text = "●",
-                ForeColor = Color.Green,
-                Location = new Point(150, 28),
-                AutoSize = true
-            };
-            this.Controls.Add(lblStatus);
-            // Logout Button
-            this.btnLogout.Font = new Font("Arial", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new Point(350, 20);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new Size(30, 30);
-            this.btnLogout.Text = "⟳";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new EventHandler(this.btnLogout_Click);
-            this.Controls.Add(this.btnLogout);
-
-            // Information Labels and TextBoxes
-            string[] infoTexts = { "Tổng thời gian", "Thời gian sử dụng", "Thời gian còn lại", "Chi phí sử dụng", "Chi phí dịch vụ" };
-            this.infoLabels = new Label[infoTexts.Length];
-            this.infoTextBoxes = new TextBox[infoTexts.Length];
-
-            int yPosition = 70;
-            for (int i = 0; i < infoTexts.Length; i++)
-            {
-                this.infoLabels[i] = new Label
-                {
-                    Text = infoTexts[i],
-                    Location = new Point(20, yPosition),
-                    AutoSize = true
-                };
-                this.Controls.Add(this.infoLabels[i]);
-
-                this.infoTextBoxes[i] = new TextBox
-                {
-                    Location = new Point(150, yPosition - 4),
-                    Size = new Size(200, 22),
-                    ReadOnly = true,
-                    BackColor = Color.LightGray
-                };
-                this.Controls.Add(this.infoTextBoxes[i]);
-
-                yPosition += 40;
-            }
-            // Buttons
-            btnMessages = new Button
-            {
-                Text = "Tin nhắn",
-                Location = new Point(20, yPosition + 20),
-                Size = new Size(160, 40),
-                BackColor = Color.LightGray
-            };
-            btnMessages.Click += btnMessages1_Click;
-            this.Controls.Add(btnMessages);
-
-            btnServices = new Button
-            {
-                Text = "Dịch vụ",
-                Location = new Point(200, yPosition + 20),
-                Size = new Size(160, 40),
-                BackColor = Color.LightGray
-            };
-            btnServices.Click += btnServices1_Click;
-            this.Controls.Add(btnServices);
-
-            btnChangePassword = new Button
-            {
-                Text = "Mật khẩu",
-                Location = new Point(20, yPosition + 80),
-                Size = new Size(160, 40),
-                BackColor = Color.YellowGreen
-            };
-            btnChangePassword.Click += btnChangePassword1_Click;
-            this.Controls.Add(btnChangePassword);
-
-            btnLockMachine = new Button
-            {
-                Text = "Khóa máy",
-                Location = new Point(200, yPosition + 80),
-                Size = new Size(160, 40),
-                BackColor = Color.GreenYellow
-            };
-            btnLockMachine.Click += btnLockMachine1_Click;
-            this.Controls.Add(btnLockMachine);
-        }
 
         private decimal TinhToanSoDu(decimal soDuHienTai, decimal soTienMotGio)
         {
             decimal soTienTrongMotGio = soTienMotGio * 1; // Ví dụ, 1 giờ
             decimal soDuSauKhiDung = soDuHienTai - soTienTrongMotGio;
             return soDuSauKhiDung;
+        }
+        private void lblUserName_TextChanged(object sender, EventArgs e)
+        {
+            this.status.Location = new Point(this.lblUserName.Width + this.lblUserName.Location.X + 11, this.status.Location.Y);
+        }
+
+        private void roundButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
