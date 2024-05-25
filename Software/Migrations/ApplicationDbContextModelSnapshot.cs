@@ -259,6 +259,9 @@ namespace Software.Migrations
                 b.Property<string>("SoDT")
                     .IsRequired()
                     .HasColumnType("varchar(10)");
+                b.Property<bool>("TrangThai")
+                    .IsRequired()
+                    .HasColumnType("bit");
 
                 b.HasKey("MaTK");
 

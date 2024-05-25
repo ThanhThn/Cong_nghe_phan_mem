@@ -139,6 +139,7 @@ namespace Software.Migrations
                     SoDu = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TenKhachHang = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     SoDT = table.Column<string>(type: "varchar(10)", nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false),
                 }
                 );
 

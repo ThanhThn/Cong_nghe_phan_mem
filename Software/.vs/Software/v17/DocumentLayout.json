@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|d:\\workspace\\cong_nghe_phan_mem\\software\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|d:\\workspace\\cong_nghe_phan_mem\\software\\controllers\\taikhoanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:controllers\\taikhoanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|d:\\workspace\\cong_nghe_phan_mem\\software\\views\\taikhoans\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\taikhoans\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|d:\\workspace\\cong_nghe_phan_mem\\software\\views\\taikhoans\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\taikhoans\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,40 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAABMAAAAAAAAAAAAIwCYAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-24T11:20:01.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\TaiKhoans\\Create.cshtml",
               "ToolTip": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Create.cshtml",
               "RelativeToolTip": "Views\\TaiKhoans\\Create.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAfAAAA",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAAAGAAAABjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-23T12:31:06.365Z",
+              "WhenOpened": "2024-05-25T03:30:31.757Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TaiKhoansController.cs",
-              "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Controllers\\TaiKhoansController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TaiKhoansController.cs",
-              "ToolTip": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Controllers\\TaiKhoansController.cs",
-              "RelativeToolTip": "Controllers\\TaiKhoansController.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAAAFIAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T12:30:53.395Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaiKhoans\\Index.cshtml",
+              "ToolTip": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Index.cshtml",
+              "RelativeToolTip": "Views\\TaiKhoans\\Index.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-25T03:29:29.237Z",
               "EditorCaption": ""
             }
           ]

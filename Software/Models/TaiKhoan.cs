@@ -12,6 +12,7 @@ namespace Software.Models
         public decimal SoDu { get; set; }
         public string TenKhachHang { get; set; }
         public string SoDT { get; set; }
+        public bool TrangThai { get; set; }
 
 
 

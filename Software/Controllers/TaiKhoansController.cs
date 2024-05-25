@@ -70,13 +70,25 @@ namespace Software.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaTK,TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
+
         {
+            var lastMaTKLonNhat = _context.TaiKhoan.OrderByDescending(t => t.MaTK).Select(t => t.MaTK).FirstOrDefault();
+
+            int getID;
+            if (lastMaTKLonNhat == null)
+            {
+                getID = 1;
+            }
+            else
+            {
+                getID = int.Parse(lastMaTKLonNhat.Substring(2)) + 1;
+            }
+            taiKhoan.MaTK = "KH0" + getID;
+
             ModelState.Remove("MaTK");
+            ModelState.Remove("TrangThai");
             if (ModelState.IsValid)
             {
-                var lastMaTKLonNhat = _context.TaiKhoan.OrderByDescending(t => t.MaTK).Select(t => t.MaTK).FirstOrDefault();
-                int getID = int.Parse(lastMaTKLonNhat.Substring(2)) + 1;
-                taiKhoan.MaTK = "KH0" + getID;
                 _context.Add(taiKhoan);
                 await _context.SaveChangesAsync();
                 // RedirectToAction(nameof(Index));
