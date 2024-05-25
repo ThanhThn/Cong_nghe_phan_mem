@@ -1,11 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Software.Data;
-
-namespace Software.Models
+﻿namespace Software.Models
 {
     public class TaiKhoan
     {
-
         public string MaTK { get; set; }
         public string TenTK { get; set; }
         public string MatKhau { get; set; }
@@ -13,8 +9,5 @@ namespace Software.Models
         public string TenKhachHang { get; set; }
         public string SoDT { get; set; }
         public bool TrangThai { get; set; }
-
-
-
     }
 }

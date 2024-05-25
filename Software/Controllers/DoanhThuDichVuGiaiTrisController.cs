@@ -28,7 +28,7 @@ namespace Software.Controllers
         }
 
         // GET: DoanhThuDichVuGiaiTris/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.DoanhThuDichVuGiaiTri == null)
             {
@@ -68,7 +68,7 @@ namespace Software.Controllers
         }
 
         // GET: DoanhThuDichVuGiaiTris/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.DoanhThuDichVuGiaiTri == null)
             {
@@ -88,7 +88,7 @@ namespace Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaDoanhThu,Ngay,SoTienThu")] DoanhThuDichVuGiaiTri doanhThuDichVuGiaiTri)
+        public async Task<IActionResult> Edit(string id, [Bind("MaDoanhThu,Ngay,SoTienThu")] DoanhThuDichVuGiaiTri doanhThuDichVuGiaiTri)
         {
             if (id != doanhThuDichVuGiaiTri.MaDoanhThu)
             {
@@ -119,7 +119,7 @@ namespace Software.Controllers
         }
 
         // GET: DoanhThuDichVuGiaiTris/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.DoanhThuDichVuGiaiTri == null)
             {
@@ -139,7 +139,7 @@ namespace Software.Controllers
         // POST: DoanhThuDichVuGiaiTris/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.DoanhThuDichVuGiaiTri == null)
             {
@@ -155,7 +155,7 @@ namespace Software.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DoanhThuDichVuGiaiTriExists(int id)
+        private bool DoanhThuDichVuGiaiTriExists(string id)
         {
           return (_context.DoanhThuDichVuGiaiTri?.Any(e => e.MaDoanhThu == id)).GetValueOrDefault();
         }

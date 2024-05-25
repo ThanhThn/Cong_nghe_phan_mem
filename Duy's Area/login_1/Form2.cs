@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -160,7 +162,7 @@ namespace login_1
 
             if (secondsRemain < 0)
             {
-                secondsUsed = 59;
+                secondsRemain = 59;
                 minutesRemain -= 1;
             }
 
@@ -193,6 +195,31 @@ namespace login_1
 
             this.txtUsedTime.Texts = showTime(hoursUsed, minutesUsed, secondsUsed);
 
+        }
+        private async Task<string> PostApi(string url, string maKH, double soDu)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var parameters = new
+                    {
+                        maKH = maKH,
+                        soDu = soDu
+                    };
+
+                    var jsonContent = JsonSerializer.Serialize(parameters);
+                    var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+                    response.EnsureSuccessStatusCode();
+                    return await response.Content.ReadAsStringAsync();
+                }
+                catch (Exception ex)
+                {
+                    return $"Error: {ex.Message}";
+                }
+            }
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)

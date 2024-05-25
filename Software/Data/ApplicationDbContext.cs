@@ -16,9 +16,7 @@ namespace Software.Data
             base.OnModelCreating(modelBuilder);
 
 
-            modelBuilder.Entity<TaiKhoan>()
-                .HasKey(t => t.MaTK);
-           
+            modelBuilder.Entity<TaiKhoan>().HasKey(t => t.MaTK);
 
             modelBuilder.Entity<ChucVu>().HasKey(c => c.MaChucVu);
 

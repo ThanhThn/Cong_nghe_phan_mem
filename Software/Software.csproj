@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <None Include="Views\TaiKhoans\Create.cshtml" />
-    <None Include="Views\TaiKhoans\Delete.cshtml" />
-    <None Include="Views\TaiKhoans\Details.cshtml" />
-    <None Include="Views\TaiKhoans\Edit.cshtml" />
     <None Include="Views\TaiKhoans\Index.cshtml" />
   </ItemGroup>
 
