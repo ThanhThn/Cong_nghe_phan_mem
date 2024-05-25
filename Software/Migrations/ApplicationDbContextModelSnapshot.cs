@@ -340,8 +340,8 @@ namespace Software.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("GiaTri")
-                        .HasColumnType("real");
+                    b.Property<double>("GiaTri")
+                        .HasColumnType("float");
 
                     b.Property<string>("TenThamSo")
                         .IsRequired()

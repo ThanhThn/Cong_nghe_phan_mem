@@ -5,7 +5,7 @@
         public string MaThamSo { get; set; }
         public string TenThamSo { get; set; }
         public string DonVi { get; set; }
-        public float GiaTri { get; set; }
+        public double GiaTri { get; set; }
         public bool TinhTrang { get; set; }
     }
 

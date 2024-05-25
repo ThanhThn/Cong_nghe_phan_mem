@@ -130,7 +130,7 @@ namespace Software.Migrations
                     MaThamSo = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TenThamSo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DonVi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GiaTri = table.Column<float>(type: "real", nullable: false),
+                    GiaTri = table.Column<double>(type: "float", nullable: false),
                     TinhTrang = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

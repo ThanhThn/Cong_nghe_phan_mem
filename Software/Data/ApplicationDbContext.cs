@@ -17,6 +17,7 @@ namespace Software.Data
 
 
             modelBuilder.Entity<TaiKhoan>().HasKey(t => t.MaTK);
+            modelBuilder.Entity<ThamSo>().HasKey(t => t.MaThamSo);
 
             modelBuilder.Entity<ChucVu>().HasKey(c => c.MaChucVu);
 
@@ -57,8 +58,6 @@ namespace Software.Data
                 .HasOne(c => c.ThucDon)
                 .WithMany(t => t.ChiTietHoaDons)
                 .HasForeignKey(c => c.MaMon);
-
-            modelBuilder.Entity<ThamSo>().HasKey(t => t.MaThamSo);
 
             modelBuilder.Entity<TaiKhoanNhanVien>()
                 .HasKey(t => t.MaTK);
