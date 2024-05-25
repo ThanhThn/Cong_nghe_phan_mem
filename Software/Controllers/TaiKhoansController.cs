@@ -166,10 +166,37 @@ namespace Software.Controllers
             return View(taiKhoan);
         }
 
+        
+
+        [HttpPost]
+        public JsonResult LogoutAccount(string id, double tienDu)
+        {
+            TaiKhoan taiKhoan = _context.TaiKhoan.FirstOrDefault(k => k.MaTK == id);
+            if (taiKhoan == null)
+            {
+                return Json(new
+                {
+                    success = false,
+                    msg = "Tài khoản không tồn tại"
+                });
+            }
+            else
+            {
+                taiKhoan.SoDu = (decimal)tienDu;
+                taiKhoan.TrangThai = false;
+                _context.SaveChanges();
+                return Json(new
+                {
+                    success = true,
+                    msg = "Thoát thành công"
+                });
+            }
+        }
+
         [HttpGet]
         public JsonResult LoginAccount(string username, string password)
         {
-            var phiDichVu = _context.ThamSo.ToList();
+            var phiDichVu = _context.ThamSo.FirstOrDefault(k => k.MaThamSo == "TS01");
             TaiKhoan taiKhoan = _context.TaiKhoan.FirstOrDefault(k => k.TenTK == username);
 
             if (taiKhoan == null)
@@ -182,7 +209,7 @@ namespace Software.Controllers
             }
             else
             {
-                if (taiKhoan.MaTK != password)
+                if (taiKhoan.MatKhau != password)
                 {
                     return Json(new
                     {
@@ -192,15 +219,28 @@ namespace Software.Controllers
                 }
                 else
                 {
-                    return Json(new
+                    if (!taiKhoan.TrangThai)
                     {
-                        success = true,
-                        msg = new
+                        taiKhoan.TrangThai = true;
+                        _context.SaveChanges();
+                        return Json(new
                         {
-                            phiDichVu = phiDichVu,
-                            soDu = taiKhoan.SoDu
-                        }
-                    });
+                            success = true,
+                            msg = new
+                            {
+                                taiKhoan = taiKhoan,
+                                phi = phiDichVu.GiaTri
+                            }
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            success = false,
+                            msg = "Tài khoản đang được đăng nhập"
+                        });
+                    }
                 }
             }
         }

@@ -9,20 +9,22 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace login_1
 {
     public partial class infoBox : Form
     {
         float dpiX;
+        string id;
         private Label[] infoLabels;
         private TextBox[] infoTextBoxes;
         private Button btnMessages;
         private Button btnServices;
         private Button btnChangePassword;
         private Button btnLockMachine;
-        private double soDuHienTai = 45000; // Giả sử số dư ban đầu là 1000
-        private double soTienMotGio = 7000; // Giả sử số tiền trong một giờ là 100
+        private double soDuHienTai; // Giả sử số dư ban đầu là 1000
+        private double soTienMotGio; // Giả sử số tiền trong một giờ là 100
         private int hoursRemain;
         private int minutesRemain;
         private int secondsRemain;
@@ -30,8 +32,11 @@ namespace login_1
         private int minutesUsed = 0;
         private int secondsUsed = 0;
 
-        public infoBox(string nameAccount)
+        public infoBox(string id, string nameAccount, double soDu, double phi)
         {
+            this.id = id;
+            this.soDuHienTai = soDu;
+            this.soTienMotGio = phi;
             InitializeDPI();
             InitializeComponent();
             this.lblUserName.Text = TrimTextToFit(nameAccount, this.lblUserName, 80);
@@ -202,18 +207,17 @@ namespace login_1
             {
                 try
                 {
-                    var parameters = new
-                    {
-                        maKH = maKH,
-                        soDu = soDu
-                    };
+                    var postData = new Dictionary<string, string>{
+                { "id", maKH },
+                { "tienDu", soDu.ToString() }};
 
-                    var jsonContent = JsonSerializer.Serialize(parameters);
-                    var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                    var content = new FormUrlEncodedContent(postData);
 
                     HttpResponseMessage response = await client.PostAsync(url, content);
                     response.EnsureSuccessStatusCode();
-                    return await response.Content.ReadAsStringAsync();
+
+                    string result = await response.Content.ReadAsStringAsync();
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -222,11 +226,38 @@ namespace login_1
             }
         }
 
-        protected override void OnFormClosed(FormClosedEventArgs e)
+        private async void infoBox_FormClosing(object sender, FormClosingEventArgs e)
         {
-            base.OnFormClosed(e);
+
+
             double remainMoney = CalculateMoney(hoursRemain, minutesRemain, secondsRemain, soTienMotGio);
-            MessageBox.Show("Form is closing!");
+
+            string urlBase = "https://localhost:7148/TaiKhoans/LogoutAccount";
+            string result = await PostApi(urlBase, this.id, remainMoney);
+
+            // Kiểm tra kết quả từ API
+            if (!result.StartsWith("Error"))
+            {
+                using (JsonDocument document = JsonDocument.Parse(result))
+                {
+                    JsonElement root = document.RootElement;
+                    bool success = root.GetProperty("success").GetBoolean();
+                    string message = root.GetProperty("msg").GetString();
+
+                    if (success)
+                    {
+                        e.Cancel = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show(message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi kết nối!");
+            }
         }
     }
 

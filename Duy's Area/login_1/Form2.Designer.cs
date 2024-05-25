@@ -393,6 +393,7 @@ namespace login_1
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Name = "infoBox";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.infoBox_FormClosing);
             this.containerTime.ResumeLayout(false);
             this.containerTime.PerformLayout();
             this.containerButton.ResumeLayout(false);

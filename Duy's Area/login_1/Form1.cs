@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,13 +40,40 @@ namespace login_1
             string pass = this.password.Texts;
             if (!name.Equals("") && !pass.Equals(""))
             {
-                string url = $"api?username={name}&password={pass}";
+                string urlBase = "https://localhost:7148/TaiKhoans/LoginAccount";
+                string url = $"{urlBase}?username={name}&password={pass}";
                 string response = await CallApiAsync(url);
-                this.Hide();
-                infoBox frm2 = new infoBox(name);
-                frm2.ShowDialog();
-                frm2 = null;
-                this.Show();
+                if (!response.StartsWith("Error"))
+                {
+                    using (JsonDocument document = JsonDocument.Parse(response))
+                    {
+                        JsonElement root = document.RootElement;
+                        bool success = root.GetProperty("success").GetBoolean();
+
+                        if (success)
+                        {
+                            JsonElement elements = root.GetProperty("msg");
+                            JsonElement user = elements.GetProperty("taiKhoan");
+                            string id = user.GetProperty("MaTK").GetString();
+                            double soDu = user.GetProperty("SoDu").GetDouble();
+                            double phi = elements.GetProperty("phi").GetDouble();
+                            this.Hide();
+                            infoBox frm2 = new infoBox(id, name, soDu, phi);
+                            frm2.ShowDialog();
+                            frm2 = null;
+                            this.Show();
+                        }
+                        else
+                        {
+                            string message = root.GetProperty("msg").GetString();
+                            MessageBox.Show(message);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(response);
+                }
             }
         }
 
