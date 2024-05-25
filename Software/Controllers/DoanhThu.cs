@@ -1,41 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Software.Data;
+using System;
+using System.Linq;
 
 namespace Software.Controllers
 {
-    public class DoanhThu : Controller
+    public class DoanhThuController : Controller
     {
-
-        //private readonly ApplicationDbContext _context;
-
-        //public DoanhThu(ApplicationDbContext context)
-        //{
-        //    _context = context;
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetDoanhThu(DateTime startDate, DateTime endDate)
-        //{
-        //    var doanhThuList = _context.DoanhThuDichVuGiaiTri
-        //        .Where(d => d.Ngay >= startDate && d.Ngay <= endDate)
-        //        .Select(d => new
-        //        {
-        //            ThoiGian = d.Ngay.ToString("M/d/yyyy h:mm:ss tt"),
-        //            DoanhThu = d.SoTienThu
-        //        })
-        //        .ToList();
-
-        //    return Json(doanhThuList);
-        //}
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         private readonly ApplicationDbContext _context;
 
-        public DoanhThu(ApplicationDbContext context)
+        public DoanhThuController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -45,20 +20,20 @@ namespace Software.Controllers
         {
             // Fetch DoanhThuDichVuGiaiTri data
             var doanhThuList = _context.DoanhThuDichVuGiaiTri
-                .Where(d => d.Ngay >= startDate && d.Ngay <= endDate)
+                .Where(d => d.Ngay.Date >= startDate.Date && d.Ngay.Date <= endDate.Date)
                 .Select(d => new
                 {
-                    ThoiGian = d.Ngay,
+                    ThoiGian = d.Ngay.Date,
                     DoanhThu = d.SoTienThu
                 })
                 .ToList();
 
             // Fetch HoaDon data
             var hoaDonList = _context.HoaDon
-                .Where(h => h.ThoiGian >= startDate && h.ThoiGian <= endDate)
+                .Where(h => h.ThoiGian.Date >= startDate.Date && h.ThoiGian.Date <= endDate.Date)
                 .Select(h => new
                 {
-                    ThoiGian = h.ThoiGian,
+                    ThoiGian = h.ThoiGian.Date,
                     DoanhThu = h.TongTien
                 })
                 .ToList();
@@ -69,15 +44,10 @@ namespace Software.Controllers
                 .GroupBy(d => d.ThoiGian)
                 .Select(g => new
                 {
-                    ThoiGian = g.Key,
+                    ThoiGian = g.Key.ToString("MM/dd/yyyy"),
                     DoanhThu = g.Sum(d => d.DoanhThu)
                 })
                 .OrderBy(d => d.ThoiGian)
-                .Select(d => new
-                {
-                    ThoiGian = d.ThoiGian.ToString("M/d/yyyy h:mm:ss tt"),
-                    DoanhThu = d.DoanhThu
-                })
                 .ToList();
 
             return Json(combinedList);
@@ -87,6 +57,5 @@ namespace Software.Controllers
         {
             return View();
         }
-
     }
 }

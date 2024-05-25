@@ -80,15 +80,18 @@
             const startDateObj = new Date(startDate);
             const endDateObj = new Date(endDate);
 
-            if (endDateObj <= startDateObj) {
-                alert('Ngày kết thúc phải lớn hơn ngày bắt đầu');
+            if (endDateObj < startDateObj) {
+                alert('Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu');
                 return;
             }
 
             // Fetch data from the server
             fetch(`/DoanhThu/GetDoanhThu?startDate=${startDate}&endDate=${endDate}`)
                 .then(response => response.json())
-                .then(data => generateReport(data))
+                .then(data => {
+                    console.log(data); // Kiểm tra dữ liệu trả về từ API
+                    generateReport(data);
+                })
                 .catch(error => console.error('Error fetching data:', error));
         });
 
@@ -114,12 +117,14 @@
 
             let totalRevenue = 0;
             data.forEach((item, index) => {
-                const dateTime = new Date(item.thoiGian);
-                const formattedDate = dateTime.toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
-                const row = document.createElement('tr');
-                row.innerHTML = `<th scope="row">${index + 1}</th><td>${formattedDate}</td><td>${item.doanhThu.toLocaleString('vi-VN')} VND</td>`;
-                tableBody.appendChild(row);
-                totalRevenue += item.doanhThu;
+                if (item && item.ThoiGian && item.DoanhThu !== undefined) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<th scope="row">${index + 1}</th><td>${item.ThoiGian}</td><td>${item.DoanhThu.toLocaleString('vi-VN')} VND</td>`;
+                    tableBody.appendChild(row);
+                    totalRevenue += item.DoanhThu;
+                } else {
+                    console.warn('Invalid item:', item); // Kiểm tra item không hợp lệ
+                }
             });
 
             document.getElementById('total-revenue').value = `${totalRevenue.toLocaleString('vi-VN')} VND`;
@@ -136,18 +141,18 @@
             // Format start and end dates
             const startDate = new Date(document.getElementById('start-date').value);
             const endDate = new Date(document.getElementById('end-date').value);
-            const startDateString = startDate.toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
-            const endDateString = endDate.toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
+            const startDateString = startDate.toLocaleDateString('vi-VN');
+            const endDateString = endDate.toLocaleDateString('vi-VN');
 
             // Add date range text
             doc.setFontSize(12);
-            doc.text(`Tu ngay: ${startDateString} - Den ngay: ${endDateString}`, 20, 30);
+            doc.text(`Tu Ngay: ${startDateString} - Den Ngay: ${endDateString}`, 20, 30);
 
             // Add table header
             doc.setFontSize(12);
             doc.setFont('times', 'bold');
             doc.text('STT', 20, 40);
-            doc.text('Thoi gian', 40, 40);
+            doc.text('Thoi Gian', 40, 40);
             doc.text('Doanh thu', 100, 40);
 
             // Add table rows
@@ -169,8 +174,8 @@
 
             // Add total revenue
             const totalRevenue = document.getElementById('total-revenue').value;
-            doc.text('Tong doanh thu:', 20, yPosition + 10);
-            doc.text(totalRevenue, 100, yPosition + 10);
+            doc.setFont('times', 'bold');
+            doc.text(`Tong doanh thu: ${totalRevenue}`, 20, yPosition + 10);
 
             // Save the PDF
             doc.save('BaoCaoTongDoanhThu.pdf');
