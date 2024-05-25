@@ -57,6 +57,19 @@ namespace Software.Controllers
             }
         }
         [HttpGet]
+        public IActionResult CheckPhoneAvailability(string phone)
+        {
+            var taikhoan = _context.TaiKhoan.FirstOrDefault(t => t.SoDT == phone);
+            if (taikhoan == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
+        [HttpGet]
 
         // GET: TaiKhoans1/Create
         public IActionResult Create()
@@ -69,7 +82,7 @@ namespace Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaTK,TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
+        public async Task<IActionResult> Create([Bind("TenTK,MatKhau,SoDu,TenKhachHang,SoDT")] TaiKhoan taiKhoan)
 
         {
             var lastMaTKLonNhat = _context.TaiKhoan.OrderByDescending(t => t.MaTK).Select(t => t.MaTK).FirstOrDefault();
@@ -83,7 +96,12 @@ namespace Software.Controllers
             {
                 getID = int.Parse(lastMaTKLonNhat.Substring(2)) + 1;
             }
-            taiKhoan.MaTK = "KH0" + getID;
+            string id = "0" + getID;
+            if (getID > 9)
+            {
+                id = getID.ToString();
+            }
+            taiKhoan.MaTK = "KH" + getID;
 
             ModelState.Remove("MaTK");
             ModelState.Remove("TrangThai");
@@ -91,8 +109,8 @@ namespace Software.Controllers
             {
                 _context.Add(taiKhoan);
                 await _context.SaveChangesAsync();
-                // RedirectToAction(nameof(Index));
-                return View(taiKhoan);
+                return RedirectToAction(nameof(Index));
+
             }
             return View(taiKhoan);
         }
