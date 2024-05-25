@@ -118,7 +118,8 @@
             <div class="money">
                 <label asp-for="SoDT" style="font-weight: bold;" for="">Số điện thoại</label>
                 <br>
-                <input id="SDT" class="border-2 border-gray-200 bg-gray-100 focus:bg-white outline-none w-full rounded-md px-3 py-2 mb-3 mt-2" asp-for="SoDT" type="text">
+                <input id="SoDT" class="border-2 border-gray-200 bg-gray-100 focus:bg-white outline-none w-full rounded-md px-3 py-2 mb-3 mt-2" asp-for="SoDT" type="text" oninput="checkPhoneAvailability()">
+                <div id="phone-error-message" class="text-danger"></div>
             </div>
         </div>
     </div>
@@ -185,7 +186,12 @@
                 createStatus("success", "Tạo tài khoản thành công")
                 setTimeout(() => {
                     document.querySelector('form').submit();
-                },2000)
+                    tenkh.value = "";
+                    sdt.value = "";
+                    tentk.value = "";
+                    mk.value = ""
+                    sodu.value = ""
+                },4000)
             }
         }
     })
@@ -238,6 +244,8 @@
                     // Tên tài khoản có sẵn
                     $("#TenTK").removeClass("error-user");
                     $("#username-error-message").text("");
+
+
                 } else {
                     // Tên tài khoản đã tồn tại
                     $("#TenTK").addClass("error-user");
@@ -245,6 +253,32 @@
                 }
             }
         });
+    }
+
+    function isNumeric(str) {
+        return /^[0-9]+$/.test(str);
+    }
+    function checkPhoneAvailability() {
+        var phone = $("#SoDT").val();
+        var valid = true;
+
+        if (phone.length != 10) {
+            $("#SoDT").addClass("error-user");
+            $("#phone-error-message").text("Độ dài của số điện thoại phải là 10.");
+            valid = false;
+        } else {
+            $("#SoDT").removeClass("error-user");
+            $("#phone-error-message").text("");
+        }
+
+        if (!isNumeric(phone)) {
+            $("#SoDT").addClass("error-user");
+            $("#phone-error-message").text("Số điện thoại chỉ chứa các chữ số.");
+            valid = false;
+        } else if (valid) {
+            $("#SoDT").removeClass("error-user");
+            $("#phone-error-message").text("");
+        }
     }
 </script>
 @section Scripts {

@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\taikhoans\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|d:\\workspace\\cong_nghe_phan_mem\\software\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|d:\\workspace\\cong_nghe_phan_mem\\software\\views\\taikhoans\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{87F6B8A6-82FE-4F52-92C6-4458DEF75C81}|Software.csproj|solutionrelative:views\\taikhoans\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,20 +34,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-25T04:31:26.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\TaiKhoans\\Create.cshtml",
               "ToolTip": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Create.cshtml",
               "RelativeToolTip": "Views\\TaiKhoans\\Create.cshtml",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAGAAAABjAAAA",
+              "ViewState": "AQIAAAwBAAAAAAAAAAAAABMBAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-25T03:30:31.757Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Workspace\\Cong_nghe_phan_mem\\Software\\Views\\TaiKhoans\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\TaiKhoans\\Index.cshtml",
@@ -51,8 +68,7 @@
               "RelativeToolTip": "Views\\TaiKhoans\\Index.cshtml",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-25T03:29:29.237Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-25T03:29:29.237Z"
             }
           ]
         }
