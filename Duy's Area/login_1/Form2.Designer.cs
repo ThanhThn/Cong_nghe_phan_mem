@@ -30,14 +30,16 @@ namespace login_1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblUserName = new System.Windows.Forms.Label();
+            this.roundButton1 = new login_1.asset.RoundButton();
             this.status = new login_1.asset.RoundPanel();
             this.containerTime = new login_1.asset.RoundPanel();
-            this.roundedTextBox5 = new login_1.asset.RoundedTextBox();
-            this.roundedTextBox4 = new login_1.asset.RoundedTextBox();
-            this.roundedTextBox3 = new login_1.asset.RoundedTextBox();
-            this.roundedTextBox2 = new login_1.asset.RoundedTextBox();
-            this.roundedTextBox1 = new login_1.asset.RoundedTextBox();
+            this.txtCostService = new login_1.asset.RoundedTextBox();
+            this.txtUsedCost = new login_1.asset.RoundedTextBox();
+            this.txtRemainTime = new login_1.asset.RoundedTextBox();
+            this.txtUsedTime = new login_1.asset.RoundedTextBox();
+            this.txtSumTime = new login_1.asset.RoundedTextBox();
             this.lblSumTime = new System.Windows.Forms.Label();
             this.lblUsedTime = new System.Windows.Forms.Label();
             this.lblRemainTime = new System.Windows.Forms.Label();
@@ -48,7 +50,7 @@ namespace login_1
             this.btnServices1 = new login_1.asset.RoundButton();
             this.btnChangePassword1 = new login_1.asset.RoundButton();
             this.btnMessages1 = new login_1.asset.RoundButton();
-            this.roundButton1 = new login_1.asset.RoundButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.containerTime.SuspendLayout();
             this.containerButton.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +66,23 @@ namespace login_1
             this.lblUserName.Text = "HIEU113";
             this.lblUserName.TextChanged += new System.EventHandler(this.lblUserName_TextChanged);
             // 
+            // roundButton1
+            // 
+            this.roundButton1.BackColor = System.Drawing.Color.Transparent;
+            this.roundButton1.BorderColor = System.Drawing.Color.Transparent;
+            this.roundButton1.BorderRadius = 29;
+            this.roundButton1.BorderSize = 0;
+            this.roundButton1.FlatAppearance.BorderSize = 0;
+            this.roundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButton1.ForeColor = System.Drawing.Color.White;
+            this.roundButton1.Image = global::login_1.Properties.Resources.Sign_in_circle;
+            this.roundButton1.Location = new System.Drawing.Point(464, 25);
+            this.roundButton1.Name = "roundButton1";
+            this.roundButton1.Size = new System.Drawing.Size(40, 40);
+            this.roundButton1.TabIndex = 20;
+            this.roundButton1.UseVisualStyleBackColor = false;
+            this.roundButton1.Click += new System.EventHandler(this.roundButton1_Click);
+            // 
             // status
             // 
             this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
@@ -77,11 +96,11 @@ namespace login_1
             // 
             this.containerTime.BackColor = System.Drawing.Color.White;
             this.containerTime.BorderRadius = 11;
-            this.containerTime.Controls.Add(this.roundedTextBox5);
-            this.containerTime.Controls.Add(this.roundedTextBox4);
-            this.containerTime.Controls.Add(this.roundedTextBox3);
-            this.containerTime.Controls.Add(this.roundedTextBox2);
-            this.containerTime.Controls.Add(this.roundedTextBox1);
+            this.containerTime.Controls.Add(this.txtCostService);
+            this.containerTime.Controls.Add(this.txtUsedCost);
+            this.containerTime.Controls.Add(this.txtRemainTime);
+            this.containerTime.Controls.Add(this.txtUsedTime);
+            this.containerTime.Controls.Add(this.txtSumTime);
             this.containerTime.Controls.Add(this.lblSumTime);
             this.containerTime.Controls.Add(this.lblUsedTime);
             this.containerTime.Controls.Add(this.lblRemainTime);
@@ -92,125 +111,125 @@ namespace login_1
             this.containerTime.Size = new System.Drawing.Size(494, 265);
             this.containerTime.TabIndex = 17;
             // 
-            // roundedTextBox5
+            // txtCostService
             // 
-            this.roundedTextBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.roundedTextBox5.BorderColor = System.Drawing.Color.Black;
-            this.roundedTextBox5.BorderFocusColor = System.Drawing.Color.Black;
-            this.roundedTextBox5.BorderRadius = 6;
-            this.roundedTextBox5.BorderSize = 1;
-            this.roundedTextBox5.Enable = true;
-            this.roundedTextBox5.Enabled = false;
-            this.roundedTextBox5.Font = new System.Drawing.Font("Inter Medium", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.roundedTextBox5.ForeColor = System.Drawing.Color.Black;
-            this.roundedTextBox5.Location = new System.Drawing.Point(200, 208);
-            this.roundedTextBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedTextBox5.Multiline = false;
-            this.roundedTextBox5.Name = "roundedTextBox5";
-            this.roundedTextBox5.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
-            this.roundedTextBox5.PasswordChar = false;
-            this.roundedTextBox5.PlaceholderColor = System.Drawing.Color.Black;
-            this.roundedTextBox5.PlaceholderText = "";
-            this.roundedTextBox5.Size = new System.Drawing.Size(252, 32);
-            this.roundedTextBox5.TabIndex = 16;
-            this.roundedTextBox5.Texts = "";
-            this.roundedTextBox5.UnderlinedStyle = false;
+            this.txtCostService.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCostService.BorderColor = System.Drawing.Color.Black;
+            this.txtCostService.BorderFocusColor = System.Drawing.Color.Black;
+            this.txtCostService.BorderRadius = 6;
+            this.txtCostService.BorderSize = 1;
+            this.txtCostService.Enable = true;
+            this.txtCostService.Enabled = false;
+            this.txtCostService.Font = new System.Drawing.Font("Inter SemiBold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtCostService.ForeColor = System.Drawing.Color.Black;
+            this.txtCostService.Location = new System.Drawing.Point(200, 208);
+            this.txtCostService.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCostService.Multiline = false;
+            this.txtCostService.Name = "txtCostService";
+            this.txtCostService.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.txtCostService.PasswordChar = false;
+            this.txtCostService.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtCostService.PlaceholderText = "";
+            this.txtCostService.Size = new System.Drawing.Size(252, 32);
+            this.txtCostService.TabIndex = 16;
+            this.txtCostService.Texts = "";
+            this.txtCostService.UnderlinedStyle = false;
             // 
-            // roundedTextBox4
+            // txtUsedCost
             // 
-            this.roundedTextBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.roundedTextBox4.BorderColor = System.Drawing.Color.Black;
-            this.roundedTextBox4.BorderFocusColor = System.Drawing.Color.Black;
-            this.roundedTextBox4.BorderRadius = 6;
-            this.roundedTextBox4.BorderSize = 1;
-            this.roundedTextBox4.Enable = true;
-            this.roundedTextBox4.Enabled = false;
-            this.roundedTextBox4.Font = new System.Drawing.Font("Inter Medium", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.roundedTextBox4.ForeColor = System.Drawing.Color.Black;
-            this.roundedTextBox4.Location = new System.Drawing.Point(200, 161);
-            this.roundedTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedTextBox4.Multiline = false;
-            this.roundedTextBox4.Name = "roundedTextBox4";
-            this.roundedTextBox4.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
-            this.roundedTextBox4.PasswordChar = false;
-            this.roundedTextBox4.PlaceholderColor = System.Drawing.Color.Black;
-            this.roundedTextBox4.PlaceholderText = "";
-            this.roundedTextBox4.Size = new System.Drawing.Size(252, 32);
-            this.roundedTextBox4.TabIndex = 15;
-            this.roundedTextBox4.Texts = "";
-            this.roundedTextBox4.UnderlinedStyle = false;
+            this.txtUsedCost.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUsedCost.BorderColor = System.Drawing.Color.Black;
+            this.txtUsedCost.BorderFocusColor = System.Drawing.Color.Black;
+            this.txtUsedCost.BorderRadius = 6;
+            this.txtUsedCost.BorderSize = 1;
+            this.txtUsedCost.Enable = true;
+            this.txtUsedCost.Enabled = false;
+            this.txtUsedCost.Font = new System.Drawing.Font("Inter SemiBold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtUsedCost.ForeColor = System.Drawing.Color.Black;
+            this.txtUsedCost.Location = new System.Drawing.Point(200, 161);
+            this.txtUsedCost.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsedCost.Multiline = false;
+            this.txtUsedCost.Name = "txtUsedCost";
+            this.txtUsedCost.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.txtUsedCost.PasswordChar = false;
+            this.txtUsedCost.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtUsedCost.PlaceholderText = "";
+            this.txtUsedCost.Size = new System.Drawing.Size(252, 32);
+            this.txtUsedCost.TabIndex = 15;
+            this.txtUsedCost.Texts = "";
+            this.txtUsedCost.UnderlinedStyle = false;
             // 
-            // roundedTextBox3
+            // txtRemainTime
             // 
-            this.roundedTextBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.roundedTextBox3.BorderColor = System.Drawing.Color.Black;
-            this.roundedTextBox3.BorderFocusColor = System.Drawing.Color.Black;
-            this.roundedTextBox3.BorderRadius = 6;
-            this.roundedTextBox3.BorderSize = 1;
-            this.roundedTextBox3.Enable = true;
-            this.roundedTextBox3.Enabled = false;
-            this.roundedTextBox3.Font = new System.Drawing.Font("Inter Medium", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.roundedTextBox3.ForeColor = System.Drawing.Color.Black;
-            this.roundedTextBox3.Location = new System.Drawing.Point(200, 114);
-            this.roundedTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedTextBox3.Multiline = false;
-            this.roundedTextBox3.Name = "roundedTextBox3";
-            this.roundedTextBox3.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
-            this.roundedTextBox3.PasswordChar = false;
-            this.roundedTextBox3.PlaceholderColor = System.Drawing.Color.Black;
-            this.roundedTextBox3.PlaceholderText = "";
-            this.roundedTextBox3.Size = new System.Drawing.Size(252, 32);
-            this.roundedTextBox3.TabIndex = 14;
-            this.roundedTextBox3.Texts = "";
-            this.roundedTextBox3.UnderlinedStyle = false;
+            this.txtRemainTime.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRemainTime.BorderColor = System.Drawing.Color.Black;
+            this.txtRemainTime.BorderFocusColor = System.Drawing.Color.Black;
+            this.txtRemainTime.BorderRadius = 6;
+            this.txtRemainTime.BorderSize = 1;
+            this.txtRemainTime.Enable = true;
+            this.txtRemainTime.Enabled = false;
+            this.txtRemainTime.Font = new System.Drawing.Font("Inter SemiBold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtRemainTime.ForeColor = System.Drawing.Color.Black;
+            this.txtRemainTime.Location = new System.Drawing.Point(200, 114);
+            this.txtRemainTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRemainTime.Multiline = false;
+            this.txtRemainTime.Name = "txtRemainTime";
+            this.txtRemainTime.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.txtRemainTime.PasswordChar = false;
+            this.txtRemainTime.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtRemainTime.PlaceholderText = "";
+            this.txtRemainTime.Size = new System.Drawing.Size(252, 32);
+            this.txtRemainTime.TabIndex = 14;
+            this.txtRemainTime.Texts = "";
+            this.txtRemainTime.UnderlinedStyle = false;
             // 
-            // roundedTextBox2
+            // txtUsedTime
             // 
-            this.roundedTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.roundedTextBox2.BorderColor = System.Drawing.Color.Black;
-            this.roundedTextBox2.BorderFocusColor = System.Drawing.Color.Black;
-            this.roundedTextBox2.BorderRadius = 6;
-            this.roundedTextBox2.BorderSize = 1;
-            this.roundedTextBox2.Enable = true;
-            this.roundedTextBox2.Enabled = false;
-            this.roundedTextBox2.Font = new System.Drawing.Font("Inter Medium", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.roundedTextBox2.ForeColor = System.Drawing.Color.Black;
-            this.roundedTextBox2.Location = new System.Drawing.Point(200, 67);
-            this.roundedTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedTextBox2.Multiline = false;
-            this.roundedTextBox2.Name = "roundedTextBox2";
-            this.roundedTextBox2.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
-            this.roundedTextBox2.PasswordChar = false;
-            this.roundedTextBox2.PlaceholderColor = System.Drawing.Color.Black;
-            this.roundedTextBox2.PlaceholderText = "";
-            this.roundedTextBox2.Size = new System.Drawing.Size(252, 32);
-            this.roundedTextBox2.TabIndex = 13;
-            this.roundedTextBox2.Texts = "";
-            this.roundedTextBox2.UnderlinedStyle = false;
+            this.txtUsedTime.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUsedTime.BorderColor = System.Drawing.Color.Black;
+            this.txtUsedTime.BorderFocusColor = System.Drawing.Color.Black;
+            this.txtUsedTime.BorderRadius = 6;
+            this.txtUsedTime.BorderSize = 1;
+            this.txtUsedTime.Enable = true;
+            this.txtUsedTime.Enabled = false;
+            this.txtUsedTime.Font = new System.Drawing.Font("Inter SemiBold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtUsedTime.ForeColor = System.Drawing.Color.Black;
+            this.txtUsedTime.Location = new System.Drawing.Point(200, 67);
+            this.txtUsedTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsedTime.Multiline = false;
+            this.txtUsedTime.Name = "txtUsedTime";
+            this.txtUsedTime.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.txtUsedTime.PasswordChar = false;
+            this.txtUsedTime.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtUsedTime.PlaceholderText = "";
+            this.txtUsedTime.Size = new System.Drawing.Size(252, 32);
+            this.txtUsedTime.TabIndex = 13;
+            this.txtUsedTime.Texts = "";
+            this.txtUsedTime.UnderlinedStyle = false;
             // 
-            // roundedTextBox1
+            // txtSumTime
             // 
-            this.roundedTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.roundedTextBox1.BorderColor = System.Drawing.Color.Black;
-            this.roundedTextBox1.BorderFocusColor = System.Drawing.Color.Black;
-            this.roundedTextBox1.BorderRadius = 6;
-            this.roundedTextBox1.BorderSize = 1;
-            this.roundedTextBox1.Enable = true;
-            this.roundedTextBox1.Enabled = false;
-            this.roundedTextBox1.Font = new System.Drawing.Font("Inter Medium", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.roundedTextBox1.ForeColor = System.Drawing.Color.Black;
-            this.roundedTextBox1.Location = new System.Drawing.Point(200, 20);
-            this.roundedTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedTextBox1.Multiline = false;
-            this.roundedTextBox1.Name = "roundedTextBox1";
-            this.roundedTextBox1.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
-            this.roundedTextBox1.PasswordChar = false;
-            this.roundedTextBox1.PlaceholderColor = System.Drawing.Color.Black;
-            this.roundedTextBox1.PlaceholderText = "";
-            this.roundedTextBox1.Size = new System.Drawing.Size(252, 32);
-            this.roundedTextBox1.TabIndex = 12;
-            this.roundedTextBox1.Texts = "";
-            this.roundedTextBox1.UnderlinedStyle = false;
+            this.txtSumTime.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSumTime.BorderColor = System.Drawing.Color.Black;
+            this.txtSumTime.BorderFocusColor = System.Drawing.Color.Black;
+            this.txtSumTime.BorderRadius = 6;
+            this.txtSumTime.BorderSize = 1;
+            this.txtSumTime.Enable = true;
+            this.txtSumTime.Enabled = false;
+            this.txtSumTime.Font = new System.Drawing.Font("Inter SemiBold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtSumTime.ForeColor = System.Drawing.Color.Black;
+            this.txtSumTime.Location = new System.Drawing.Point(200, 20);
+            this.txtSumTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSumTime.Multiline = false;
+            this.txtSumTime.Name = "txtSumTime";
+            this.txtSumTime.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.txtSumTime.PasswordChar = false;
+            this.txtSumTime.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtSumTime.PlaceholderText = "";
+            this.txtSumTime.Size = new System.Drawing.Size(252, 32);
+            this.txtSumTime.TabIndex = 12;
+            this.txtSumTime.Texts = "";
+            this.txtSumTime.UnderlinedStyle = false;
             // 
             // lblSumTime
             // 
@@ -355,28 +374,16 @@ namespace login_1
             this.btnMessages1.UseVisualStyleBackColor = false;
             this.btnMessages1.Click += new System.EventHandler(this.btnMessages1_Click);
             // 
-            // roundButton1
+            // timer1
             // 
-            this.roundButton1.BackColor = System.Drawing.Color.Transparent;
-            this.roundButton1.BorderColor = System.Drawing.Color.Transparent;
-            this.roundButton1.BorderRadius = 29;
-            this.roundButton1.BorderSize = 0;
-            this.roundButton1.FlatAppearance.BorderSize = 0;
-            this.roundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton1.ForeColor = System.Drawing.Color.White;
-            this.roundButton1.Image = global::login_1.Properties.Resources.Sign_in_circle;
-            this.roundButton1.Location = new System.Drawing.Point(464, 25);
-            this.roundButton1.Name = "roundButton1";
-            this.roundButton1.Size = new System.Drawing.Size(40, 40);
-            this.roundButton1.TabIndex = 20;
-            this.roundButton1.UseVisualStyleBackColor = false;
-            this.roundButton1.Click += new System.EventHandler(this.roundButton1_Click);
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // infoBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 558);
+            this.ClientSize = new System.Drawing.Size(545, 546);
             this.Controls.Add(this.roundButton1);
             this.Controls.Add(this.status);
             this.Controls.Add(this.lblUserName);
@@ -403,11 +410,11 @@ namespace login_1
         private System.Windows.Forms.Label lblUsedCost;
         private System.Windows.Forms.Label lblRemainTime;
         private asset.RoundPanel containerTime;
-        private asset.RoundedTextBox roundedTextBox1;
-        private asset.RoundedTextBox roundedTextBox5;
-        private asset.RoundedTextBox roundedTextBox4;
-        private asset.RoundedTextBox roundedTextBox3;
-        private asset.RoundedTextBox roundedTextBox2;
+        private asset.RoundedTextBox txtSumTime;
+        private asset.RoundedTextBox txtCostService;
+        private asset.RoundedTextBox txtUsedCost;
+        private asset.RoundedTextBox txtRemainTime;
+        private asset.RoundedTextBox txtUsedTime;
         private asset.RoundPanel containerButton;
         private asset.RoundButton btnMessages1;
         private asset.RoundButton btnServices1;
@@ -415,5 +422,6 @@ namespace login_1
         private asset.RoundButton btnLockMachine1;
         private asset.RoundPanel status;
         private asset.RoundButton roundButton1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
